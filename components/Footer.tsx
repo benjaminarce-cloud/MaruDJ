@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="border-t hairline px-5 md:px-10 py-10 mt-24">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
         <div>
-          <p className="font-display text-2xl italic mb-2">Maru Bravo</p>
+          <p className="font-display text-3xl mb-2">Maru Bravo</p>
           <p className="label">Ibiza · Worldwide</p>
         </div>
         <div className="flex flex-wrap gap-6">

@@ -37,7 +37,7 @@ export default function Gallery() {
   return (
     <div className="pt-28 md:pt-36 px-5 md:px-10">
       <Reveal>
-        <h1 className="font-display italic text-5xl md:text-7xl mb-16">
+        <h1 className="font-display text-6xl md:text-9xl leading-none mb-12 md:mb-16">
           {t.gallery.title}
         </h1>
       </Reveal>

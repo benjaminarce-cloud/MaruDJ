@@ -24,7 +24,7 @@ export default function Booking() {
   return (
     <div className="pt-28 md:pt-36 px-5 md:px-10">
       <Reveal>
-        <h1 className="font-display italic text-5xl md:text-7xl mb-16">{t.booking.title}</h1>
+        <h1 className="font-display text-6xl md:text-9xl leading-none mb-12 md:mb-16">{t.booking.title}</h1>
       </Reveal>
 
       <div className="grid md:grid-cols-2 gap-16 max-w-5xl">
@@ -32,7 +32,7 @@ export default function Booking() {
           <p className="text-muted text-lg mb-6">{t.booking.lead}</p>
           <a
             href={`mailto:${site.bookingEmail}`}
-            className="font-display text-2xl md:text-3xl italic link-line hover:text-accent break-all"
+            className="font-serif-it text-2xl md:text-4xl link-line hover:text-fuego break-all"
           >
             {site.bookingEmail}
           </a>

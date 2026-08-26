@@ -10,11 +10,11 @@ export default function Notes() {
   return (
     <div className="pt-28 md:pt-36 px-5 md:px-10 min-h-[70svh]">
       <Reveal>
-        <h1 className="font-display italic text-5xl md:text-7xl mb-16">{t.notes.title}</h1>
+        <h1 className="font-display text-6xl md:text-9xl leading-none mb-12 md:mb-16">{t.notes.title}</h1>
       </Reveal>
 
       <Reveal>
-        <p className="font-display text-2xl md:text-4xl leading-snug max-w-2xl mb-20">
+        <p className="font-serif-it text-3xl md:text-5xl leading-snug max-w-2xl mb-20">
           {t.notes.empty}
         </p>
       </Reveal>

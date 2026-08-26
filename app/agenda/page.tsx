@@ -11,13 +11,13 @@ export default function Agenda() {
   return (
     <div className="pt-28 md:pt-36 px-5 md:px-10 min-h-[70svh]">
       <Reveal>
-        <h1 className="font-display italic text-5xl md:text-7xl mb-16">{t.agenda.title}</h1>
+        <h1 className="font-display text-6xl md:text-9xl leading-none mb-12 md:mb-16">{t.agenda.title}</h1>
       </Reveal>
 
       {events.length === 0 ? (
         <Reveal>
           <div className="max-w-2xl">
-            <p className="font-display text-2xl md:text-4xl leading-snug mb-4">
+            <p className="font-serif-it text-3xl md:text-5xl leading-snug mb-4">
               {t.agenda.empty}
             </p>
             <p className="text-muted text-lg mb-10">{t.agenda.emptySub}</p>

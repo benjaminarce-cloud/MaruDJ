@@ -39,6 +39,13 @@ export const copy = {
       ],
       followLabel: "Follow",
       followTitle: "Wherever the night goes",
+      dayNightLabel: "From beach to booth",
+      dayNightTitle: "Day & Night",
+      day: "Day",
+      dusk: "Dusk",
+      night: "Night",
+      book: "Book Maru",
+      bookSub: "Clubs · festivals · premium events · worldwide",
     },
     about: {
       title: "About",
@@ -67,6 +74,8 @@ export const copy = {
     video: {
       title: "Video",
       channel: "YouTube channel",
+      loopsTitle: "Moments",
+      setsTitle: "Full sets",
     },
     booking: {
       title: "Booking",
@@ -129,6 +138,13 @@ export const copy = {
       ],
       followLabel: "Seguir",
       followTitle: "Donde vaya la noche",
+      dayNightLabel: "De la playa a la cabina",
+      dayNightTitle: "Día & Noche",
+      day: "Día",
+      dusk: "Atardecer",
+      night: "Noche",
+      book: "Book Maru",
+      bookSub: "Clubs · festivales · eventos premium · worldwide",
     },
     about: {
       title: "About",
@@ -157,6 +173,8 @@ export const copy = {
     video: {
       title: "Video",
       channel: "Canal de YouTube",
+      loopsTitle: "Momentos",
+      setsTitle: "Sets completos",
     },
     booking: {
       title: "Booking",

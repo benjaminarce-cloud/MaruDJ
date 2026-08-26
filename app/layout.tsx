@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Anton, Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/lib/i18n";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+
+const anton = Anton({
+  variable: "--font-anton",
+  weight: "400",
+  subsets: ["latin"],
+});
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -30,7 +36,7 @@ export const metadata: Metadata = {
       "An experience beyond music. Urban & Latin House DJ based in Ibiza.",
     url: "https://marubravo.com",
     siteName: "Maru Bravo",
-    images: [{ url: "/photos/hero.jpg", width: 2000, height: 1300 }],
+    images: [{ url: "/video/hero-poster.jpg", width: 1920, height: 1080 }],
     type: "website",
   },
 };
@@ -41,7 +47,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${manrope.variable}`}>
+    <html
+      lang="en"
+      className={`${anton.variable} ${fraunces.variable} ${manrope.variable}`}
+    >
       <body className="min-h-screen flex flex-col">
         <LangProvider>
           <Nav />
