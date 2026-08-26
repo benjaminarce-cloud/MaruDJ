@@ -1,0 +1,186 @@
+export type Lang = "en" | "es";
+
+export const copy = {
+  en: {
+    nav: {
+      about: "About",
+      agenda: "Agenda",
+      gallery: "Gallery",
+      video: "Video",
+      notes: "Notes",
+      booking: "Booking",
+    },
+    hero: {
+      tagline: "An experience beyond music",
+      location: "Ibiza · Worldwide",
+      cta: "Bookings",
+      listen: "Listen",
+    },
+    home: {
+      introLabel: "The artist",
+      intro:
+        "A DJ who makes a difference in the scene. Urban & Latin House with sets of international essence for clubs, festivals and premium events.",
+      more: "Read the full story",
+      soundLabel: "The sound",
+      soundWords: ["Hypnotic", "Emotive", "Elegant", "Joyful"],
+      soundText:
+        "Her sets propose a hypnotic and emotional journey — deep grooves, enveloping melodies and carefully built moments of release. Introspection, sensuality and progressive euphoria, aligned with the essence of Ibiza nights.",
+      genres: "Urban · Latin House · House",
+      venuesLabel: "Selected venues",
+      videoLabel: "Watch",
+      videoTitle: "In session",
+      allVideos: "All videos",
+      statsLabel: "In numbers",
+      stats: [
+        { n: "6+", t: "years behind the decks" },
+        { n: "60", t: "shows a year" },
+        { n: "11", t: "cities" },
+        { n: "4", t: "countries" },
+      ],
+      followLabel: "Follow",
+      followTitle: "Wherever the night goes",
+    },
+    about: {
+      title: "About",
+      p1: "Maru Bravo began her musical path at a very young age, with a deep emotional connection to music and the dancefloor. Before establishing herself as a professional DJ, she developed an artistic sensibility rooted in musical curation, human connection and the construction of experiences.",
+      p2: "Her profile combines artistic intuition, an emotional reading of the dancefloor and a carefully crafted aesthetic vision. She doesn't just make people dance — she builds atmospheres, holds tension and connects with the mood of the room. Her edge lies in the balance of musical elegance, emotional intuition and a warm energy that feels genuine both above and below the booth.",
+      p3: "Born in San Miguel de Tucumán, Argentina, and now based between Ibiza and the international circuit, she has played across Spain, Argentina, Mexico and Monaco — from Ushuaïa's The Unexpected to Cova Santa and Lío.",
+      aestheticLabel: "Aesthetic",
+      aesthetic:
+        "A boho blend of sophistication, sensibility and Ibizan night energy. Dark, elegant, cinematic tones — an aesthetic tied to movement, subtle sensuality and human connection on the floor.",
+      boothLabel: "In the booth",
+      booth:
+        "Open format DJ sets. Sophisticated warm-ups, emotional openings and progressive peak-times built with elegance. Exclusive edits, unreleased tracks and an intuitive read of the room's timing.",
+      influencesLabel: "Influences",
+      citiesLabel: "Cities played",
+    },
+    agenda: {
+      title: "Agenda",
+      empty: "New dates are being confirmed.",
+      emptySub: "Want Maru in your city or venue?",
+      request: "Request availability",
+      tickets: "Tickets",
+    },
+    gallery: {
+      title: "Gallery",
+    },
+    video: {
+      title: "Video",
+      channel: "YouTube channel",
+    },
+    booking: {
+      title: "Booking",
+      lead: "For bookings, press and collaborations:",
+      formName: "Name",
+      formEmail: "Email",
+      formDate: "Date / city / venue",
+      formMessage: "Tell us about the event",
+      send: "Send request",
+      rider: "Technical rider available upon request.",
+      follow: "Follow",
+    },
+    notes: {
+      title: "Notes",
+      empty: "Notes from the booth — stories, music and moments. Coming soon.",
+      newsletterLabel: "The list",
+      newsletter: "Be the first to know about new dates and music.",
+      subscribe: "Join the list",
+    },
+    footer: {
+      rights: "All rights reserved",
+      bookings: "Bookings",
+    },
+  },
+  es: {
+    nav: {
+      about: "About",
+      agenda: "Agenda",
+      gallery: "Galería",
+      video: "Video",
+      notes: "Notas",
+      booking: "Booking",
+    },
+    hero: {
+      tagline: "Una experiencia más allá de la música",
+      location: "Ibiza · Worldwide",
+      cta: "Bookings",
+      listen: "Escuchar",
+    },
+    home: {
+      introLabel: "La artista",
+      intro:
+        "Una DJ que marca la diferencia en la escena. Urban & Latin House, con sets de esencia internacional para clubs, festivales y eventos premium.",
+      more: "Leer la historia completa",
+      soundLabel: "El sonido",
+      soundWords: ["Hipnótica", "Emotiva", "Elegante", "Alegre"],
+      soundText:
+        "Sus sets proponen un viaje hipnótico y emocional — grooves profundos, melodías envolventes y momentos de liberación energética muy cuidados. Introspección, sensualidad y euforia progresiva, alineadas con la esencia de las noches de Ibiza.",
+      genres: "Urban · Latin House · House",
+      venuesLabel: "Venues seleccionados",
+      videoLabel: "Ver",
+      videoTitle: "En sesión",
+      allVideos: "Todos los videos",
+      statsLabel: "En números",
+      stats: [
+        { n: "6+", t: "años en cabina" },
+        { n: "60", t: "shows al año" },
+        { n: "11", t: "ciudades" },
+        { n: "4", t: "países" },
+      ],
+      followLabel: "Seguir",
+      followTitle: "Donde vaya la noche",
+    },
+    about: {
+      title: "About",
+      p1: "Maru Bravo comenzó su camino musical desde muy joven, con una fuerte conexión emocional con la música y la pista de baile. Antes de consolidarse como DJ profesional, desarrolló una sensibilidad artística vinculada a la curaduría musical, la conexión humana y la construcción de experiencias.",
+      p2: "Su perfil combina intuición artística, lectura emocional del dancefloor y una visión estética muy cuidada. No busca solamente hacer bailar: construye climas, sostiene tensión y conecta con el estado anímico de la pista. Su diferencial está en la combinación entre elegancia musical, intuición emocional y una energía cálida que se siente genuina tanto arriba como abajo de la cabina.",
+      p3: "Nacida en San Miguel de Tucumán, Argentina, y radicada hoy entre Ibiza y el circuito internacional, ha tocado en España, Argentina, México y Mónaco — desde The Unexpected de Ushuaïa hasta Cova Santa y Lío.",
+      aestheticLabel: "Estética",
+      aesthetic:
+        "Una mezcla boho de sofisticación, sensibilidad y energía nocturna ibicenca. Tonos oscuros, elegantes y cinematográficos — una estética ligada al movimiento, la sensualidad sutil y la conexión humana en pista.",
+      boothLabel: "En cabina",
+      booth:
+        "DJ sets open format. Warm-ups sofisticados, openings emocionales y peak-times progresivos construidos con elegancia. Edits exclusivos, tracks unreleased y una lectura intuitiva del timing de pista.",
+      influencesLabel: "Influencias",
+      citiesLabel: "Ciudades",
+    },
+    agenda: {
+      title: "Agenda",
+      empty: "Nuevas fechas en confirmación.",
+      emptySub: "¿Querés a Maru en tu ciudad o venue?",
+      request: "Solicitar disponibilidad",
+      tickets: "Entradas",
+    },
+    gallery: {
+      title: "Galería",
+    },
+    video: {
+      title: "Video",
+      channel: "Canal de YouTube",
+    },
+    booking: {
+      title: "Booking",
+      lead: "Para bookings, prensa y colaboraciones:",
+      formName: "Nombre",
+      formEmail: "Email",
+      formDate: "Fecha / ciudad / venue",
+      formMessage: "Contanos sobre el evento",
+      send: "Enviar solicitud",
+      rider: "Rider técnico disponible bajo petición.",
+      follow: "Seguir",
+    },
+    notes: {
+      title: "Notas",
+      empty: "Notas desde la cabina — historias, música y momentos. Muy pronto.",
+      newsletterLabel: "La lista",
+      newsletter: "Enterate primero de nuevas fechas y música.",
+      subscribe: "Unirme a la lista",
+    },
+    footer: {
+      rights: "Todos los derechos reservados",
+      bookings: "Bookings",
+    },
+  },
+} as const;
+
+export const influences = ["Peggy Gou", "CamelPhat", "Michael Bibi", "Maceo Plex"];
