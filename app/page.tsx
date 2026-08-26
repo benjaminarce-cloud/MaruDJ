@@ -20,7 +20,7 @@ export default function Home() {
           fill
           priority
           sizes="100vw"
-          className="object-cover photo"
+          className="object-cover object-[50%_22%] photo"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/30 to-black/40" />
         <div className="relative px-5 md:px-10 pb-14 md:pb-20 w-full">
