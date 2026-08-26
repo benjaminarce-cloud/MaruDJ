@@ -32,7 +32,7 @@ export default function Video() {
           href={site.socials.youtube}
           target="_blank"
           rel="noreferrer"
-          className="label link-line !text-fuego inline-block mt-8 px-2 md:px-0"
+          className="label link-line !text-pop inline-block mt-8 px-2 md:px-0"
         >
           {t.video.channel} →
         </a>

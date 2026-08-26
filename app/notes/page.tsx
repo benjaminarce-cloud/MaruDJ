@@ -14,7 +14,7 @@ export default function Notes() {
       </Reveal>
 
       <Reveal>
-        <p className="font-serif-it text-3xl md:text-5xl leading-snug max-w-2xl mb-20">
+        <p className="font-display text-4xl md:text-6xl leading-tight max-w-3xl mb-20">
           {t.notes.empty}
         </p>
       </Reveal>

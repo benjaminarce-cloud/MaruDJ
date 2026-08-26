@@ -46,6 +46,11 @@ export const copy = {
       night: "Night",
       book: "Book Maru",
       bookSub: "Clubs · festivals · premium events · worldwide",
+      showLabel: "23:00 — sunrise",
+      showTitle: "The Show",
+      showSub: "Lights down. Hands up.",
+      statement2a: "Feel-good music",
+      statement2b: "for dark rooms",
     },
     about: {
       title: "About",
@@ -145,6 +150,11 @@ export const copy = {
       night: "Noche",
       book: "Book Maru",
       bookSub: "Clubs · festivales · eventos premium · worldwide",
+      showLabel: "23:00 — amanecer",
+      showTitle: "El Show",
+      showSub: "Luces abajo. Manos arriba.",
+      statement2a: "Música para sentirse bien",
+      statement2b: "en cuartos oscuros",
     },
     about: {
       title: "About",

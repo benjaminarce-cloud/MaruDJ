@@ -17,7 +17,7 @@ export default function Agenda() {
       {events.length === 0 ? (
         <Reveal>
           <div className="max-w-2xl">
-            <p className="font-serif-it text-3xl md:text-5xl leading-snug mb-4">
+            <p className="font-display text-4xl md:text-6xl leading-tight mb-4">
               {t.agenda.empty}
             </p>
             <p className="text-muted text-lg mb-10">{t.agenda.emptySub}</p>

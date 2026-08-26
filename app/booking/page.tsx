@@ -32,7 +32,7 @@ export default function Booking() {
           <p className="text-muted text-lg mb-6">{t.booking.lead}</p>
           <a
             href={`mailto:${site.bookingEmail}`}
-            className="font-serif-it text-2xl md:text-4xl link-line hover:text-fuego break-all"
+            className="font-display text-2xl md:text-4xl link-line hover:text-pop break-all"
           >
             {site.bookingEmail}
           </a>

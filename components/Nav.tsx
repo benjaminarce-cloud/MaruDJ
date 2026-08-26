@@ -19,7 +19,7 @@ function LangToggle({ solid = false }: { solid?: boolean }) {
   return (
     <button
       onClick={() => setLang(lang === "en" ? "es" : "en")}
-      className={`label cursor-pointer transition-colors ${solid ? "!text-ink" : ""} hover:!text-fuego`}
+      className={`label cursor-pointer transition-colors ${solid ? "!text-ink" : ""} hover:!text-pop`}
       aria-label="Switch language"
     >
       {lang === "en" ? "ES" : "EN"}
@@ -79,7 +79,7 @@ export default function Nav() {
                 href={l.href}
                 onClick={() => setOpen(false)}
                 className={`font-display text-5xl leading-tight ${
-                  i % 2 ? "outline-ink hover:outline-fuego" : "hover:text-fuego"
+                  i % 2 ? "outline-ink hover:outline-pop" : "hover:text-pop"
                 } transition-colors`}
               >
                 {t.nav[l.key]}

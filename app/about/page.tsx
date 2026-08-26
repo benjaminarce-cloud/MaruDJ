@@ -34,7 +34,7 @@ export default function About() {
       <div className="px-4 md:px-8 py-16 md:py-24 grid md:grid-cols-12 gap-12">
         <div className="md:col-span-7 space-y-8 max-w-2xl">
           <Reveal>
-            <p className="font-serif-it text-2xl md:text-3xl leading-relaxed">{t.about.p1}</p>
+            <p className="text-xl md:text-2xl leading-relaxed">{t.about.p1}</p>
           </Reveal>
           <Reveal>
             <p className="text-muted text-lg leading-relaxed">{t.about.p2}</p>
@@ -64,9 +64,9 @@ export default function About() {
         ].map((c) => (
           <Reveal key={c.n}>
             <div className="grid md:grid-cols-12 gap-6 px-4 md:px-8 py-12 border-b hairline">
-              <p className="font-display text-4xl text-fuego md:col-span-2">{c.n}</p>
+              <p className="font-display text-4xl text-pop md:col-span-2">{c.n}</p>
               <p className="label md:col-span-3 pt-3">{c.label}</p>
-              <p className={`md:col-span-7 text-lg leading-relaxed ${c.serif ? "font-serif-it text-xl" : "text-muted"}`}>
+              <p className="md:col-span-7 text-lg leading-relaxed text-muted">
                 {c.body}
               </p>
             </div>
@@ -74,7 +74,7 @@ export default function About() {
         ))}
         <Reveal>
           <div className="grid md:grid-cols-12 gap-6 px-4 md:px-8 py-12 border-b hairline">
-            <p className="font-display text-4xl text-fuego md:col-span-2">03</p>
+            <p className="font-display text-4xl text-pop md:col-span-2">03</p>
             <p className="label md:col-span-3 pt-3">{t.about.influencesLabel}</p>
             <p className="md:col-span-7 font-display text-2xl md:text-4xl leading-snug">
               {influences.join(" · ")}

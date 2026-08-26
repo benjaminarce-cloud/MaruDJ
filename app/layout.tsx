@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Fraunces, Manrope } from "next/font/google";
+import { Anton, IBM_Plex_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/lib/i18n";
 import Nav from "@/components/Nav";
@@ -11,14 +11,14 @@ const anton = Anton({
   subsets: ["latin"],
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-});
-
 const manrope = Manrope({
   variable: "--font-manrope",
+  subsets: ["latin"],
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-mono",
+  weight: ["400", "500"],
   subsets: ["latin"],
 });
 
@@ -49,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${anton.variable} ${fraunces.variable} ${manrope.variable}`}
+      className={`${anton.variable} ${manrope.variable} ${plexMono.variable}`}
     >
       <body className="min-h-screen flex flex-col">
         <LangProvider>
