@@ -4,27 +4,36 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
-import { site, venues, cities } from "@/content/site";
+import { site, venues, cities, clips } from "@/content/site";
 import Ticker from "@/components/Ticker";
+import VideoLoop from "@/components/VideoLoop";
 
 type Tab = "archive" | "interview" | "listen" | "booking";
 
 const BW = (contrast: number, brightness?: number) =>
   `grayscale(1) contrast(${contrast})${brightness ? ` brightness(${brightness})` : ""}`;
 
-const ARCHIVE = [
-  { src: "/photos/photo-21.jpg", alt: "Black and white studio portrait", c: 1.1 },
-  { src: "/photos/photo-24.jpg", alt: "Red neon booth, Pioneer decks", c: 1.22 },
-  { src: "/photos/photo-27.jpg", alt: "Rooftop decks at golden hour", c: 1.1 },
-  { src: "/photos/photo-18.jpg", alt: "Editorial portrait with headphones", c: 1.08 },
-  { src: "/photos/photo-29.jpg", alt: "Club set under lasers", c: 1.2 },
-  { src: "/photos/photo-28.jpg", alt: "Playing by the sea", c: 1.12 },
-  { src: "/photos/photo-25.jpg", alt: "Night out at Roto", c: 1.14 },
-  { src: "/photos/photo-32.jpg", alt: "Black and white street portrait", c: 1.06 },
-  { src: "/photos/photo-26.jpg", alt: "Golden hour rooftop set", c: 1.1 },
-  { src: "/photos/photo-16.jpg", alt: "Studio set, hands on the controls", c: 1.1 },
-  { src: "/photos/photo-20.jpg", alt: "Editorial portrait, black backdrop", c: 1.08 },
-  { src: "/photos/photo-05.jpg", alt: "Motion-blurred moment behind the booth", c: 1.18 },
+/* the archive wall: strongest frames + every clip, looping — b/w like the poster */
+const ARCHIVE: (
+  | { type: "photo"; src: string; alt: string; c: number }
+  | { type: "clip"; i: number }
+)[] = [
+  { type: "photo", src: "/photos/photo-26.jpg", alt: "Golden hour rooftop set", c: 1.1 },
+  { type: "clip", i: 5 }, // peak time red
+  { type: "photo", src: "/photos/photo-24.jpg", alt: "Red neon booth, Pioneer decks", c: 1.22 },
+  { type: "clip", i: 1 }, // rooftop golden hour
+  { type: "photo", src: "/photos/photo-05.jpg", alt: "Motion-blurred moment behind the booth", c: 1.18 },
+  { type: "clip", i: 6 }, // on the floor
+  { type: "photo", src: "/photos/photo-25.jpg", alt: "Night out at Roto", c: 1.14 },
+  { type: "clip", i: 4 }, // rooftop pool
+  { type: "photo", src: "/photos/photo-29.jpg", alt: "Club set under lasers", c: 1.2 },
+  { type: "clip", i: 0 }, // beach house
+  { type: "photo", src: "/photos/photo-28.jpg", alt: "Playing by the sea", c: 1.12 },
+  { type: "clip", i: 2 }, // la victoria night
+  { type: "photo", src: "/photos/photo-21.jpg", alt: "Black and white studio portrait", c: 1.1 },
+  { type: "clip", i: 3 }, // by the sea
+  { type: "photo", src: "/photos/photo-27.jpg", alt: "Rooftop decks at golden hour", c: 1.1 },
+  { type: "photo", src: "/photos/photo-18.jpg", alt: "Editorial portrait with headphones", c: 1.08 },
 ];
 
 const REELS = [
@@ -232,24 +241,40 @@ export default function Home() {
           {tab === "archive" && (
             <div className="px-5 md:px-[26px] pt-9 pb-[74px]">
               <div className="flex justify-between items-baseline text-[10.5px] tracking-[0.24em] uppercase opacity-60">
-                <span>{h.archive.count}</span>
+                <span>
+                  {ARCHIVE.length} {h.archive.count}
+                </span>
                 <Link href="/gallery" className="hover:text-pop transition-colors">
                   {h.archive.seeAll}
                 </Link>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 mt-[22px]">
-                {ARCHIVE.map((p) => (
-                  <div key={p.src} className="relative aspect-[3/4] overflow-hidden bg-black">
-                    <Image
-                      src={p.src}
-                      alt={p.alt}
-                      fill
-                      sizes="(min-width: 768px) 25vw, 50vw"
-                      className="object-cover"
-                      style={{ filter: BW(p.c) }}
-                    />
-                  </div>
-                ))}
+                {ARCHIVE.map((m) =>
+                  m.type === "photo" ? (
+                    <div key={m.src} className="relative aspect-[3/4] overflow-hidden bg-black">
+                      <Image
+                        src={m.src}
+                        alt={m.alt}
+                        fill
+                        sizes="(min-width: 768px) 25vw, 50vw"
+                        className="object-cover"
+                        style={{ filter: BW(m.c) }}
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      key={clips[m.i].src}
+                      className="relative aspect-[3/4] overflow-hidden bg-black"
+                      style={{ filter: BW(1.15) }}
+                    >
+                      <VideoLoop
+                        src={clips[m.i].src}
+                        poster={clips[m.i].poster}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    </div>
+                  )
+                )}
               </div>
             </div>
           )}

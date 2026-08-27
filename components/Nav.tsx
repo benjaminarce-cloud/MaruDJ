@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { useLang } from "@/lib/i18n";
 
 const links = [
-  { href: "/about", key: "about" },
   { href: "/gallery", key: "gallery" },
   { href: "/video", key: "video" },
   { href: "/epk", key: "epk" },
