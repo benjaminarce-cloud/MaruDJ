@@ -61,6 +61,12 @@ export const heroVideo = {
   poster: "/video/hero-poster.jpg",
 };
 
+// 23s montage: 4K rooftop clips + slow pans over full-res stills
+export const heroReel = {
+  src: "/video/hero-reel.mp4",
+  poster: "/video/hero-reel-poster.jpg",
+};
+
 export const clips: Clip[] = [
   { src: "/video/clip-beach.mp4", poster: "/video/clip-beach-poster.jpg", tag: { en: "Sandbar Beach House — day", es: "Sandbar Beach House — día" }, portrait: true },
   { src: "/video/clip-golden.mp4", poster: "/video/clip-golden-poster.jpg", tag: { en: "Rooftop — golden hour", es: "Rooftop — golden hour" }, portrait: true },

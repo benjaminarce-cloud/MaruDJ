@@ -4,6 +4,7 @@ import "./globals.css";
 import { LangProvider } from "@/lib/i18n";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import Listen from "@/components/Listen";
 
 const shrikhand = Shrikhand({
   variable: "--font-disp",
@@ -61,6 +62,7 @@ export default function RootLayout({
         <LangProvider>
           <Nav />
           <main className="flex-1">{children}</main>
+          <Listen />
           <Footer />
         </LangProvider>
       </body>

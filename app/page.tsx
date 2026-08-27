@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
-import { site, venues, cities, heroVideo, clips, gallery } from "@/content/site";
+import { site, venues, cities, heroReel, clips, gallery } from "@/content/site";
 import Ticker from "@/components/Ticker";
 import VideoLoop from "@/components/VideoLoop";
 
@@ -111,8 +111,8 @@ export default function Home() {
       {/* ======== SCENE 01 — GOLDEN HOUR HERO (4K clip, name right so she pans free) ======== */}
       <section data-act className="snap-start relative h-svh min-h-[560px] overflow-hidden flex flex-col justify-end">
         <VideoLoop
-          src={heroVideo.src}
-          poster={heroVideo.poster}
+          src={heroReel.src}
+          poster={heroReel.poster}
           eager
           className="absolute inset-0 w-full h-full object-cover photo"
         />
