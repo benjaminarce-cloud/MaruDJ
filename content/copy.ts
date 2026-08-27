@@ -11,54 +11,32 @@ export const copy = {
       epk: "EPK",
     },
     epk: {
+      corners: ["DJ", "Open format", "Ibiza"],
       cover: {
-        kicker: "Electronic press kit",
-        season: "Summer 2026",
-        loc: "Ibiza · worldwide",
+        kicker: "Press kit",
+        season: "Summer 26",
+        roles: "DJ · Open format · Ibiza",
         tagline: "An experience beyond music",
-        genres: ["Open format", "Urban", "Latin house", "House"],
-        contactLabel: "Bookings & press",
       },
-      running: "Maru Bravo — press kit",
-      bio: {
-        no: "01 / Biography",
-        title: "Biography",
+      about: {
+        title: "About",
         p: [
-          "Maru Bravo is a DJ from San Miguel de Tucumán, Argentina, based between Ibiza and the international circuit. She grew up close to the dancefloor and it shows: open-format sets across Urban, Latin House and House — sophisticated warm-ups, emotional openings, progressive peak-times built with patience.",
-          "Six years in and around sixty shows a year, from Ushuaïa's The Unexpected to Lío, Cova Santa, and the rooftops and beach houses of the Riviera Maya. She doesn't only make people dance: she builds atmospheres, holds tension, and reads the mood of the room.",
-          "Her edge is the balance of musical elegance, emotional intuition and a warm energy that feels genuine both above and below the booth. Her thing was never just making people dance. It's building a feeling that outlasts the night.",
+          "Born in San Miguel de Tucumán, Argentina. Based in Ibiza.",
+          "Open-format sets across Urban, Latin House and House — slow warm-ups, emotional openings, peak-times built with patience.",
+          "Six years. Sixty nights a year. Four countries.",
         ],
-        portraitCaption: "Portrait — studio, Barcelona",
       },
-      facts: [
-        ["Sound", "Urban · Latin House · House — open format"],
-        ["Base", "Ibiza · worldwide"],
-        ["Experience", "6+ years · ~60 shows a year · 4 countries"],
-        ["Venues", "Ushuaïa (The Unexpected) · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes"],
-        ["Cities", "Ibiza · Barcelona · Madrid · Alicante · Buenos Aires · Córdoba · Tucumán · Tulum · Playa del Carmen · Cancún · Monaco"],
-        ["Rider", "Technical rider available on request"],
-      ],
-      quote: "“I don't want the night to be loud. I want it to be inevitable.”",
-      excerpt: {
-        label: "On the first hour",
-        p: "Everyone wants the drop. The first hour is where you earn it — you're deciding what kind of room it's going to be. I play slower than people expect and I never apologise for it.",
+      statement: "I don't want the night to be loud. I want it to be inevitable.",
+      rooms: {
+        label: "Rooms",
+        note: "Ushuaïa — The Unexpected",
+        p: "From Ushuaïa's The Unexpected to Lío, Cova Santa, and the rooftops and beach houses of the Riviera Maya.",
       },
-      pics: {
-        no: "02 / Pictures & contact",
-        captions: "Rooftop, Playa del Carmen · Red room, Pioneer decks · Sandbar Beach House · Lasers, 04:10 · Roto, Ibiza · Peak time, handheld",
+      rider: {
+        title: "Technical rider",
+        lines: ["Urban · Latin House · House — open format", "Full technical rider on request"],
       },
-      booth: {
-        title: "In the booth",
-        p: "Open format sets. Sophisticated warm-ups, emotional openings and progressive peak-times built with elegance. Exclusive edits, unreleased tracks and an intuitive read of the room's timing.",
-        aestheticLabel: "Aesthetic",
-        aesthetic:
-          "A boho blend of sophistication, sensibility and Ibizan night energy. Dark, elegant, cinematic tones — tied to movement, subtle sensuality and human connection on the floor.",
-      },
-      contact: {
-        title: "Contact",
-        bookings: "Bookings",
-        site: "Site",
-      },
+      contactLabel: "Bookings & press",
       print: "Print / Save as PDF",
     },
     hero: {
@@ -195,54 +173,32 @@ export const copy = {
       epk: "EPK",
     },
     epk: {
+      corners: ["DJ", "Open format", "Ibiza"],
       cover: {
-        kicker: "Electronic press kit",
-        season: "Verano 2026",
-        loc: "Ibiza · worldwide",
+        kicker: "Press kit",
+        season: "Verano 26",
+        roles: "DJ · Open format · Ibiza",
         tagline: "Una experiencia más allá de la música",
-        genres: ["Open format", "Urban", "Latin house", "House"],
-        contactLabel: "Bookings & prensa",
       },
-      running: "Maru Bravo — press kit",
-      bio: {
-        no: "01 / Biografía",
-        title: "Biografía",
+      about: {
+        title: "About",
         p: [
-          "Maru Bravo es una DJ de San Miguel de Tucumán, Argentina, radicada entre Ibiza y el circuito internacional. Creció cerca de la pista y se nota: sets open format entre Urban, Latin House y House — warm-ups sofisticados, openings emocionales, peak-times progresivos construidos con paciencia.",
-          "Seis años de carrera y unos sesenta shows al año, desde The Unexpected de Ushuaïa hasta Lío, Cova Santa y los rooftops y beach houses de la Riviera Maya. No busca solamente hacer bailar: construye climas, sostiene tensión y lee el ánimo de la sala.",
-          "Su diferencial está en el equilibrio entre elegancia musical, intuición emocional y una energía cálida que se siente genuina arriba y abajo de la cabina. Lo suyo nunca fue solo hacer bailar. Es construir una sensación que dura más que la noche.",
+          "Nacida en San Miguel de Tucumán, Argentina. Radicada en Ibiza.",
+          "Sets open format entre Urban, Latin House y House — warm-ups lentos, openings emocionales, peak-times construidos con paciencia.",
+          "Seis años. Sesenta noches al año. Cuatro países.",
         ],
-        portraitCaption: "Retrato — estudio, Barcelona",
       },
-      facts: [
-        ["Sonido", "Urban · Latin House · House — open format"],
-        ["Base", "Ibiza · worldwide"],
-        ["Trayectoria", "6+ años · ~60 shows al año · 4 países"],
-        ["Venues", "Ushuaïa (The Unexpected) · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes"],
-        ["Ciudades", "Ibiza · Barcelona · Madrid · Alicante · Buenos Aires · Córdoba · Tucumán · Tulum · Playa del Carmen · Cancún · Mónaco"],
-        ["Rider", "Rider técnico disponible bajo petición"],
-      ],
-      quote: "“No quiero que la noche sea fuerte. Quiero que sea inevitable.”",
-      excerpt: {
-        label: "Sobre la primera hora",
-        p: "Todos quieren el drop. La primera hora es donde te lo ganás: ahí decidís qué tipo de sala va a ser. Toco más lento de lo que la gente espera y nunca me disculpo por eso.",
+      statement: "No quiero que la noche sea fuerte. Quiero que sea inevitable.",
+      rooms: {
+        label: "Salas",
+        note: "Ushuaïa — The Unexpected",
+        p: "Desde The Unexpected de Ushuaïa hasta Lío, Cova Santa y los rooftops y beach houses de la Riviera Maya.",
       },
-      pics: {
-        no: "02 / Fotos & contacto",
-        captions: "Rooftop, Playa del Carmen · Cuarto rojo, Pioneer decks · Sandbar Beach House · Láseres, 04:10 · Roto, Ibiza · Peak time, a mano",
+      rider: {
+        title: "Rider técnico",
+        lines: ["Urban · Latin House · House — open format", "Rider técnico completo bajo petición"],
       },
-      booth: {
-        title: "En cabina",
-        p: "Sets open format. Warm-ups sofisticados, openings emocionales y peak-times progresivos construidos con elegancia. Edits exclusivos, tracks unreleased y una lectura intuitiva del timing de pista.",
-        aestheticLabel: "Estética",
-        aesthetic:
-          "Una mezcla boho de sofisticación, sensibilidad y energía nocturna ibicenca. Tonos oscuros, elegantes y cinematográficos — ligados al movimiento, la sensualidad sutil y la conexión humana en pista.",
-      },
-      contact: {
-        title: "Contacto",
-        bookings: "Bookings",
-        site: "Sitio",
-      },
+      contactLabel: "Bookings & prensa",
       print: "Imprimir / Guardar PDF",
     },
     hero: {

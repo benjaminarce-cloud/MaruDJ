@@ -196,14 +196,19 @@ body::after {
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
 
-/* ======== PRINT (EPK → PDF) ======== */
+/* ======== PRINT (EPK → PDF: landscape full-bleed spreads) ======== */
 @media print {
+  @page { size: landscape; margin: 0; }
   body::after { display: none; }
   header, .no-print { display: none !important; }
-  body { background: #efece4; }
+  body { background: #060606; }
   * {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
-  .print-page { break-after: page; }
+  .print-page {
+    break-after: page;
+    height: 100vh;
+    min-height: 0;
+  }
 }
