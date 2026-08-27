@@ -2,189 +2,427 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
-import { site, venues, cities, heroReel, clips, gallery } from "@/content/site";
+import { site, venues, cities } from "@/content/site";
 import Ticker from "@/components/Ticker";
-import Socials from "@/components/Socials";
-import VideoLoop from "@/components/VideoLoop";
 
+type Tab = "archive" | "interview" | "listen" | "booking";
 
-/** the wall: photos + video loops interleaved, every tile near native size */
-const MOSAIC: ({ type: "photo"; i: number } | { type: "clip"; i: number })[] = [
-  { type: "photo", i: 0 },  // golden rooftop
-  { type: "clip", i: 0 },   // beach
-  { type: "photo", i: 1 },  // fairy lights laugh
-  { type: "clip", i: 2 },   // la victoria
-  { type: "photo", i: 2 },  // sandbar beach
-  { type: "clip", i: 1 },   // rooftop golden
-  { type: "photo", i: 6 },  // bunker red
-  { type: "clip", i: 5 },   // peak red
-  { type: "photo", i: 4 },  // sun portrait
-  { type: "clip", i: 6 },   // crowd
-  { type: "photo", i: 12 }, // ROTO
-  { type: "clip", i: 4 },   // rooftop pool
-  { type: "photo", i: 9 },  // smiling mixer
-  { type: "clip", i: 3 },   // by the sea
-  { type: "photo", i: 10 }, // neon club (landscape)
-  { type: "photo", i: 3 },  // golden booth
-  { type: "photo", i: 11 }, // pink wall
-  { type: "photo", i: 8 },  // rooftop golden 2
+const BW = (contrast: number, brightness?: number) =>
+  `grayscale(1) contrast(${contrast})${brightness ? ` brightness(${brightness})` : ""}`;
+
+const ARCHIVE = [
+  { src: "/photos/photo-21.jpg", alt: "Black and white studio portrait", c: 1.1 },
+  { src: "/photos/photo-24.jpg", alt: "Red neon booth, Pioneer decks", c: 1.22 },
+  { src: "/photos/photo-27.jpg", alt: "Rooftop decks at golden hour", c: 1.1 },
+  { src: "/photos/photo-18.jpg", alt: "Editorial portrait with headphones", c: 1.08 },
+  { src: "/photos/photo-29.jpg", alt: "Club set under lasers", c: 1.2 },
+  { src: "/photos/photo-28.jpg", alt: "Playing by the sea", c: 1.12 },
+  { src: "/photos/photo-25.jpg", alt: "Night out at Roto", c: 1.14 },
+  { src: "/photos/photo-32.jpg", alt: "Black and white street portrait", c: 1.06 },
+  { src: "/photos/photo-26.jpg", alt: "Golden hour rooftop set", c: 1.1 },
+  { src: "/photos/photo-16.jpg", alt: "Studio set, hands on the controls", c: 1.1 },
+  { src: "/photos/photo-20.jpg", alt: "Editorial portrait, black backdrop", c: 1.08 },
+  { src: "/photos/photo-05.jpg", alt: "Motion-blurred moment behind the booth", c: 1.18 },
+];
+
+const REELS = [
+  { src: "/video/clip-red-poster.jpg", alt: "Peak time" },
+  { src: "/video/clip-pool-poster.jpg", alt: "Rooftop pool" },
+  { src: "/video/clip-crowd-poster.jpg", alt: "On the floor" },
 ];
 
 export default function Home() {
-  const { t, lang } = useLang();
+  const { t, lang, setLang } = useLang();
+  const [tab, setTab] = useState<Tab>("archive");
+  const [sent, setSent] = useState(false);
+  const statImg = useRef<HTMLDivElement>(null);
+
+  const h = t.home;
+  const trackLinks = [site.socials.soundcloud, site.socials.soundcloud, site.socials.spotify];
+
   useEffect(() => {
-    document.documentElement.classList.add("snap-night");
-    return () => document.documentElement.classList.remove("snap-night");
+    const onScroll = () => {
+      const el = statImg.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const p = (window.innerHeight - r.top) / (window.innerHeight + r.height);
+      el.style.transform = `scale(1.12) translateY(${((p - 0.5) * -60).toFixed(1)}px)`;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scenes = t.home.scenes;
+  const go = (next: Tab) => {
+    setTab(next);
+    document.getElementById("tabs")?.scrollIntoView({ behavior: "smooth" });
+  };
+  const goRails = () => document.getElementById("rails")?.scrollIntoView({ behavior: "smooth" });
+
+  const sideTabs: { key: Tab; label: string }[] = [
+    { key: "archive", label: h.side.archive },
+    { key: "interview", label: h.side.interview },
+    { key: "listen", label: h.side.listen },
+    { key: "booking", label: h.side.booking },
+  ];
 
   return (
-    <div>
-      {/* ======== SCENE 01 — GOLDEN HOUR HERO (4K clip, name right so she pans free) ======== */}
-      <section data-act className="snap-start relative h-svh min-h-[560px] overflow-hidden flex flex-col justify-end">
-        <VideoLoop
-          src={heroReel.src}
-          poster={heroReel.poster}
-          eager
-          className="absolute inset-0 w-full h-full object-cover photo"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-        <div className="relative px-4 md:px-8 pb-20 md:pb-14 flex items-end justify-end gap-6">
-          <div className="text-right">
-            <p className="label !text-ink/80 mb-3">{scenes[0].tag} — 20:30</p>
-            <h1 className="font-display leading-[1.02] text-[clamp(3.2rem,10.5vw,10rem)] glow-soft">
-              Maru Bravo
-            </h1>
-            <p className="font-script text-2xl md:text-4xl text-ink/95 mt-3">{t.hero.tagline}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* ======== VENUES TICKER — right under the hero ======== */}
-      <section className="py-10 md:py-14 border-b hairline overflow-hidden">
-        <Ticker
-          items={venues}
-          duration="34s"
-          separator="✦"
-          itemClassName="font-display text-5xl md:text-8xl leading-tight glow-red [&>span:nth-child(2)]:text-pop"
-        />
-        <Ticker
-          items={cities}
-          reverse
-          duration="40s"
-          separator="✦"
-          className="mt-2 md:mt-4"
-          itemClassName="font-display text-5xl md:text-8xl leading-tight text-ink/90 [&>span:nth-child(2)]:text-pop"
-        />
-      </section>
-
-      {/* ======== SCENE 02 — PEAK TIME: THE WALL ======== */}
-      <section data-act className="snap-start relative bg-bg py-16 md:py-20">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,36,64,0.1),transparent_55%)]" />
-        <div className="relative px-2 md:px-8">
-          <div className="flex items-end justify-between px-2 md:px-0 mb-8">
-            <div>
-              <p className="label mb-2">{scenes[1].tag} — 03:00</p>
-              <p className="font-script text-2xl md:text-4xl glow-soft">{scenes[1].line}</p>
-            </div>
-            <div className="hidden md:flex gap-8 mb-1">
-              <Link href="/gallery" className="label link-line hover:!text-pop">{t.home.seeGallery} →</Link>
-              <Link href="/video" className="label link-line hover:!text-pop">{t.home.seeVideo} →</Link>
-            </div>
-          </div>
-
-          <div className="columns-2 md:columns-3 lg:columns-4 gap-2 [&>*]:mb-2">
-            {MOSAIC.map((tile) =>
-              tile.type === "photo" ? (
-                <Link
-                  key={`p${tile.i}`}
-                  href="/gallery"
-                  className="media-hover block relative overflow-hidden rounded-lg"
-                >
-                  <Image
-                    src={gallery[tile.i].src}
-                    alt={gallery[tile.i].alt}
-                    width={gallery[tile.i].w}
-                    height={gallery[tile.i].h}
-                    sizes="(min-width: 1024px) 24vw, (min-width: 768px) 33vw, 50vw"
-                    className="w-full h-auto photo"
-                  />
-                </Link>
-              ) : (
-                <Link key={`c${tile.i}`} href="/video" className="block relative overflow-hidden rounded-lg">
-                  <div className="relative aspect-[9/16]">
-                    <VideoLoop
-                      src={clips[tile.i].src}
-                      poster={clips[tile.i].poster}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    <p className="absolute bottom-2 left-3 label !text-[9px] !text-ink/75">
-                      ▶ {clips[tile.i].tag[lang]}
-                    </p>
-                  </div>
-                </Link>
-              )
-            )}
-          </div>
-
-          <div className="flex md:hidden gap-8 px-2 mt-6">
-            <Link href="/gallery" className="label link-line !text-pop">{t.home.seeGallery} →</Link>
-            <Link href="/video" className="label link-line !text-pop">{t.home.seeVideo} →</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ======== SCENE 03 — THE FLOOR: venues + numbers + set ======== */}
-      <section data-act className="snap-start relative bg-bg py-16 md:py-20 overflow-hidden border-y hairline">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,rgba(255,36,64,0.09),transparent_55%)]" />
-        <div className="relative">
-          <p className="label px-4 md:px-8 mb-10">{scenes[2].tag} — 04:30</p>
-          <div className="px-4 md:px-8 flex flex-col md:flex-row md:items-end justify-between gap-10">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-              {t.home.stats.map((s) => (
-                <div key={s.t}>
-                  <p className="font-display text-4xl md:text-6xl text-ink">{s.n}</p>
-                  <p className="label mt-2">{s.t}</p>
-                </div>
-              ))}
-            </div>
-            <Link
-              href="/video"
-              className="self-start md:self-auto rounded-full border-2 border-pop px-8 py-3.5 font-display text-lg text-ink hover:bg-pop transition-colors whitespace-nowrap"
+    <div className="bg-bg" style={{ fontFamily: "var(--font-mono), monospace" }}>
+      {/* fixed side rail */}
+      <div className="fixed top-0 left-0 bottom-0 w-10 md:w-[58px] z-[60] border-r hairline flex flex-col items-center justify-between py-4 bg-bg">
+        <a
+          href="#top"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className="text-[10px] tracking-[0.2em] uppercase [writing-mode:vertical-rl] hover:text-pop transition-colors"
+        >
+          MB
+        </a>
+        <div className="flex flex-col gap-6 items-center text-[10px] tracking-[0.22em] uppercase">
+          <button onClick={goRails} className="[writing-mode:vertical-rl] cursor-pointer hover:text-pop transition-colors">
+            {h.side.rooms}
+          </button>
+          {sideTabs.map((s) => (
+            <button
+              key={s.key}
+              onClick={() => go(s.key)}
+              className={`[writing-mode:vertical-rl] cursor-pointer transition-colors ${
+                s.key === "booking" ? "text-pop hover:text-ink" : "hover:text-pop"
+              }`}
             >
-              {t.home.watchSet} →
-            </Link>
-          </div>
+              {s.label}
+            </button>
+          ))}
         </div>
-      </section>
+        <button
+          onClick={() => setLang(lang === "en" ? "es" : "en")}
+          aria-label="Switch language"
+          className="text-[10px] tracking-[0.2em] uppercase [writing-mode:vertical-rl] opacity-60 cursor-pointer hover:opacity-100 hover:text-pop transition-colors"
+        >
+          {lang === "en" ? "ES" : "EN"}
+        </button>
+      </div>
 
-      {/* ======== SCENE 04 — YOUR CITY (red room) ======== */}
-      <section
-        data-act
-        className="snap-start relative min-h-svh flex flex-col justify-between pt-24 pb-24 px-4 md:px-8 overflow-hidden"
-        style={{ background: "radial-gradient(ellipse at 50% 30%, #a30d26, #4a000d 75%, #240007)" }}
-      >
-        <div className="relative">
-          <p className="label !text-ink/80">{scenes[3].tag}</p>
-          <p className="label !text-ink/55 mt-1">{t.home.bookSub}</p>
+      <div className="pl-10 md:pl-[58px]">
+        {/* ======== HERO ======== */}
+        <section id="top" className="relative min-h-svh flex flex-col justify-center px-5 md:px-[26px] pt-[70px] pb-[26px] overflow-hidden">
+          <Image
+            src="/photos/photo-05.jpg"
+            alt="Long exposure behind the booth"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+            style={{ filter: BW(1.25, 0.42) }}
+          />
+          <div className="absolute inset-0 [background:radial-gradient(ellipse_at_50%_45%,rgba(6,6,6,0.35),rgba(6,6,6,0.94)_78%)]" />
+
+          <div className="relative text-center max-w-[1180px] mx-auto w-full">
+            <div className="flex items-center gap-4 justify-center text-[10.5px] tracking-[0.32em] uppercase opacity-70">
+              <span className="h-px flex-1 bg-ink/30" />
+              <span>{h.hero.presents}</span>
+              <span className="h-px flex-1 bg-ink/30" />
+            </div>
+            <h1 className="font-display uppercase leading-[0.84] text-[clamp(58px,13.5vw,208px)] mt-[22px]">
+              Maru
+              <br />
+              Bravo
+            </h1>
+            <p className="font-editorial italic text-[clamp(20px,2.4vw,34px)] mt-5 opacity-90">{h.hero.tagline}</p>
+            <div className="flex items-center gap-4 justify-center mt-[30px] text-[10.5px] tracking-[0.26em] uppercase opacity-70">
+              <span className="h-px flex-1 bg-ink/30" />
+              {h.hero.genres.map((g, i) => (
+                <span key={g} className="contents">
+                  {i > 0 && <span className="text-pop">/</span>}
+                  <span>{g}</span>
+                </span>
+              ))}
+              <span className="h-px flex-1 bg-ink/30" />
+            </div>
+            <div className="flex flex-wrap gap-3 justify-center mt-[34px] text-[10.5px] tracking-[0.2em] uppercase">
+              <button
+                onClick={() => go("booking")}
+                className="bg-ink text-bg px-6 py-[13px] cursor-pointer hover:bg-pop transition-colors"
+              >
+                {h.hero.ctaBook}
+              </button>
+              <button
+                onClick={() => go("listen")}
+                className="border border-ink/50 px-6 py-[13px] cursor-pointer hover:border-ink transition-colors"
+              >
+                {h.hero.ctaListen}
+              </button>
+            </div>
+          </div>
+          <div className="absolute left-5 md:left-[26px] bottom-[22px] text-[10px] tracking-[0.2em] uppercase opacity-50">
+            {h.hero.coords}
+          </div>
+          <div className="absolute right-5 md:right-[26px] bottom-[22px] text-[10px] tracking-[0.2em] uppercase opacity-50">
+            {h.hero.season}
+          </div>
+        </section>
+
+        {/* ======== RAILS — rooms & cities ======== */}
+        <section id="rails" className="pt-12 pb-[52px] border-t hairline">
+          <div className="flex justify-between gap-5 px-5 md:px-[26px] pb-[22px] text-[10.5px] tracking-[0.24em] uppercase opacity-60">
+            <span>{h.rails.label}</span>
+            <span>{h.rails.note}</span>
+          </div>
+
+          <Ticker
+            items={venues}
+            duration="40s"
+            separator="✦"
+            className="border-y hairline py-4"
+            itemClassName="font-display uppercase text-[clamp(30px,5.4vw,84px)] leading-none [&>span:nth-child(2)]:text-pop [&>span:nth-child(2)]:!opacity-100 [&>span:nth-child(2)]:text-[clamp(14px,1.8vw,26px)]"
+          />
+          <Ticker
+            items={cities}
+            reverse
+            duration="52s"
+            separator="·"
+            className="border-b hairline py-3.5"
+            itemClassName="font-editorial italic text-[clamp(20px,3vw,46px)] [&>span:nth-child(2)]:opacity-40"
+          />
+
+          <div className="flex justify-between gap-5 px-5 md:px-[26px] pt-5 text-[10.5px] tracking-[0.2em] uppercase opacity-50">
+            <span>{h.rails.statLeft}</span>
+            <span className="text-right">{h.rails.statRight}</span>
+          </div>
+        </section>
+
+        {/* ======== STATEMENT ======== */}
+        <section className="relative min-h-[82vh] flex items-center justify-center px-6 py-20 overflow-hidden border-t hairline">
+          <div ref={statImg} className="absolute inset-0 will-change-transform">
+            <Image
+              src="/photos/photo-06.jpg"
+              alt="Movement during a set"
+              fill
+              sizes="100vw"
+              className="object-cover"
+              style={{ filter: BW(1.2, 0.4) }}
+            />
+          </div>
+          <blockquote className="relative m-0 max-w-[22ch] text-center">
+            <p className="font-editorial text-[clamp(30px,5.2vw,78px)] leading-[1.08]">{h.quote.text}</p>
+            <footer className="mt-[26px] text-[10.5px] tracking-[0.24em] uppercase opacity-60">{h.quote.route}</footer>
+          </blockquote>
+        </section>
+
+        {/* ======== TABS ======== */}
+        <section id="tabs" className="border-t hairline min-h-svh">
+          <div className="sticky top-0 z-50 flex bg-bg border-b hairline">
+            {sideTabs.map((s, i) => (
+              <button
+                key={s.key}
+                onClick={() => setTab(s.key)}
+                className={`flex-1 py-[18px] px-2 md:px-3.5 text-[9px] md:text-[10.5px] tracking-[0.24em] uppercase cursor-pointer transition-colors ${
+                  i < sideTabs.length - 1 ? "border-r hairline" : ""
+                } ${tab === s.key ? "bg-ink text-bg" : "opacity-60 hover:opacity-100"}`}
+              >
+                {t.home.tabs[s.key]}
+              </button>
+            ))}
+          </div>
+
+          {tab === "archive" && (
+            <div className="px-5 md:px-[26px] pt-9 pb-[74px]">
+              <div className="flex justify-between items-baseline text-[10.5px] tracking-[0.24em] uppercase opacity-60">
+                <span>{h.archive.count}</span>
+                <Link href="/gallery" className="hover:text-pop transition-colors">
+                  {h.archive.seeAll}
+                </Link>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 mt-[22px]">
+                {ARCHIVE.map((p) => (
+                  <div key={p.src} className="relative aspect-[3/4] overflow-hidden bg-black">
+                    <Image
+                      src={p.src}
+                      alt={p.alt}
+                      fill
+                      sizes="(min-width: 768px) 25vw, 50vw"
+                      className="object-cover"
+                      style={{ filter: BW(p.c) }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {tab === "interview" && (
+            <div className="px-5 md:px-[26px] pt-9 pb-[74px]">
+              <div className="flex justify-between items-baseline text-[10.5px] tracking-[0.24em] uppercase opacity-60">
+                <span>{h.interview.label}</span>
+                <span>{h.interview.date}</span>
+              </div>
+              <div className="grid lg:grid-cols-[0.6fr_1fr_0.55fr] gap-10 mt-[30px] items-start">
+                <figure className="m-0 max-w-sm">
+                  <div className="relative aspect-[2/3] overflow-hidden bg-black">
+                    <Image
+                      src="/photos/photo-05.jpg"
+                      alt="Motion-blurred moment behind the booth"
+                      fill
+                      sizes="(min-width: 1024px) 25vw, 90vw"
+                      className="object-cover"
+                      style={{ filter: BW(1.18) }}
+                    />
+                  </div>
+                  <figcaption className="mt-2 text-[9.5px] tracking-[0.18em] uppercase opacity-50">
+                    {h.interview.caption}
+                  </figcaption>
+                </figure>
+                <div className="flex flex-col gap-[26px] max-w-[60ch]">
+                  <p className="font-editorial text-[clamp(26px,3.2vw,46px)] leading-[1.1]">{h.interview.quote}</p>
+                  {h.interview.qa.map((item) => (
+                    <div key={item.q}>
+                      <p className="mb-2 text-[10.5px] tracking-[0.2em] uppercase text-pop">{item.q}</p>
+                      <p className="font-editorial text-[19px] leading-[1.55]">{item.a}</p>
+                    </div>
+                  ))}
+                  <Link href="/epk" className="text-[10.5px] tracking-[0.2em] uppercase opacity-50 hover:opacity-100 hover:text-pop transition-all">
+                    {h.interview.more}
+                  </Link>
+                </div>
+                <div className="flex flex-col gap-5">
+                  {h.interview.facts.map(([k, v]) => (
+                    <div key={k} className="border-t hairline pt-3.5">
+                      <p className="text-[10px] tracking-[0.2em] uppercase opacity-50">{k}</p>
+                      <p className="mt-2 font-editorial text-xl leading-[1.35]">{v}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {tab === "listen" && (
+            <div className="px-5 md:px-[26px] pt-9 pb-[74px]">
+              <div className="grid md:grid-cols-[1fr_0.8fr] gap-12 items-start">
+                <div>
+                  <h2 className="font-display uppercase text-[clamp(32px,5vw,76px)] leading-[0.94] mb-6">{h.listen.title}</h2>
+                  <div className="border-t hairline">
+                    {h.listen.tracks.map((tr, i) => (
+                      <a
+                        key={tr.t}
+                        href={trackLinks[i]}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="grid grid-cols-[1fr_auto_auto] gap-5 items-baseline py-4 px-0.5 border-b hairline hover:bg-ink/5 transition-colors"
+                      >
+                        <span className="font-editorial text-2xl">{tr.t}</span>
+                        <span className="text-[10.5px] tracking-[0.18em] uppercase opacity-55">{tr.d}</span>
+                        <span className="text-[10.5px] tracking-[0.18em] uppercase text-pop">{h.listen.play}</span>
+                      </a>
+                    ))}
+                  </div>
+                  <div className="flex gap-[18px] mt-5 text-[10.5px] tracking-[0.2em] uppercase">
+                    <a href={site.socials.soundcloud} target="_blank" rel="noreferrer" className="hover:text-pop transition-colors">SoundCloud</a>
+                    <a href={site.socials.spotify} target="_blank" rel="noreferrer" className="hover:text-pop transition-colors">Spotify</a>
+                    <a href={site.socials.youtube} target="_blank" rel="noreferrer" className="hover:text-pop transition-colors">YouTube</a>
+                  </div>
+                </div>
+                <div>
+                  <p className="mb-3 text-[10.5px] tracking-[0.24em] uppercase opacity-60">{h.listen.reels}</p>
+                  <div className="grid grid-cols-3 gap-2">
+                    {REELS.map((r) => (
+                      <a key={r.src} href={site.socials.instagram} target="_blank" rel="noreferrer">
+                        <div className="relative aspect-[9/16] overflow-hidden bg-black">
+                          <Image
+                            src={r.src}
+                            alt={r.alt}
+                            fill
+                            sizes="(min-width: 768px) 14vw, 30vw"
+                            className="object-cover"
+                            style={{ filter: BW(1.16) }}
+                          />
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                  <div className="flex gap-4 mt-[18px] text-[10.5px] tracking-[0.2em] uppercase">
+                    <a href={site.socials.instagram} target="_blank" rel="noreferrer" className="hover:text-pop transition-colors">Instagram</a>
+                    <a href={site.socials.youtube} target="_blank" rel="noreferrer" className="hover:text-pop transition-colors">YouTube</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {tab === "booking" && (
+            <div className="px-5 md:px-[26px] pt-9 pb-[74px]">
+              <div className="grid md:grid-cols-[0.9fr_1.1fr] gap-12 items-start">
+                <div>
+                  <h2 className="font-display uppercase text-[clamp(38px,6.6vw,112px)] leading-[0.88] mb-[18px]">
+                    {h.booking.title.split("\n").map((line, i) => (
+                      <span key={i}>
+                        {i > 0 && <br />}
+                        {line}
+                      </span>
+                    ))}
+                  </h2>
+                  <p className="font-editorial text-[19px] leading-[1.5] mb-6 opacity-85 max-w-[34ch]">{h.booking.lead}</p>
+                  <div className="grid gap-3 text-[10.5px] tracking-[0.16em] uppercase">
+                    <div className="flex justify-between gap-4 border-t hairline pt-2.5">
+                      <span className="opacity-50">{h.booking.bookings}</span>
+                      <a href={`mailto:${site.bookingEmail}`} className="normal-case tracking-[0.02em] hover:text-pop transition-colors">
+                        {site.bookingEmail}
+                      </a>
+                    </div>
+                    <div className="flex justify-between gap-4 border-t hairline pt-2.5">
+                      <span className="opacity-50">{h.booking.press}</span>
+                      <Link href="/epk" className="normal-case tracking-[0.02em] hover:text-pop transition-colors">
+                        {h.booking.pressLink}
+                      </Link>
+                    </div>
+                    <div className="flex justify-between gap-4 border-t hairline pt-2.5">
+                      <span className="opacity-50">{h.booking.rider}</span>
+                      <span className="normal-case tracking-[0.02em] opacity-80">{h.booking.riderVal}</span>
+                    </div>
+                  </div>
+                </div>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    setSent(true);
+                  }}
+                  className="flex flex-col border-t hairline"
+                >
+                  {[h.booking.form.name, h.booking.form.email, h.booking.form.venue, h.booking.form.date].map((ph) => (
+                    <input
+                      key={ph}
+                      placeholder={ph}
+                      className="border-0 border-b hairline bg-transparent py-4 px-0.5 text-sm text-ink outline-none placeholder:text-ink/35"
+                    />
+                  ))}
+                  <textarea
+                    placeholder={h.booking.form.msg}
+                    rows={3}
+                    className="border-0 border-b hairline bg-transparent py-4 px-0.5 text-sm text-ink outline-none resize-y placeholder:text-ink/35"
+                  />
+                  <button
+                    type="submit"
+                    className="mt-[22px] self-start bg-ink text-bg px-[26px] py-3.5 text-[10.5px] tracking-[0.2em] uppercase cursor-pointer hover:bg-pop transition-colors"
+                  >
+                    {sent ? h.booking.form.sent : h.booking.form.send}
+                  </button>
+                </form>
+              </div>
+            </div>
+          )}
+        </section>
+
+        {/* ======== FOOT ======== */}
+        <div className="flex justify-between gap-5 flex-wrap border-t hairline px-5 md:px-[26px] pt-4 pb-[26px] text-[9.5px] tracking-[0.2em] uppercase opacity-50">
+          <span>Maru Bravo</span>
+          <span>Ibiza · Worldwide</span>
+          <span>© {new Date().getFullYear()}</span>
         </div>
-        <Link href="/booking" className="relative group block text-center">
-          <p className="font-display leading-[1] text-[clamp(3.2rem,12vw,12rem)] glow-red group-hover:scale-[1.02] transition-transform">
-            {t.home.book}
-          </p>
-          <p className="font-script text-2xl md:text-4xl text-ink/90 mt-4">{scenes[3].line}</p>
-        </Link>
-        <div className="relative flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <a href={`mailto:${site.bookingEmail}`} className="font-display text-lg md:text-2xl underline underline-offset-8 decoration-2">
-            {site.bookingEmail}
-          </a>
-          <Socials className="text-ink" size={24} />
-          <p className="label !text-ink/55">© {new Date().getFullYear()} Maru Bravo · Ibiza · Worldwide</p>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }

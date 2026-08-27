@@ -34,9 +34,9 @@ export default function About() {
       {/* statement */}
       <section className="px-4 md:px-8 py-16 md:py-24 border-b hairline">
         <p className="font-display leading-[1.1] text-[clamp(2.2rem,6vw,5.5rem)] glow-red max-w-5xl">
-          {t.home.statement2a} {t.home.statement2b}
+          {t.home.quote.text}
         </p>
-        <p className="text-muted text-lg mt-8 max-w-xl">{t.home.soundText}</p>
+        <p className="text-muted text-lg mt-8 max-w-xl">{t.home.interview.qa[2].a}</p>
       </section>
 
       <div className="px-4 md:px-8 py-16 md:py-24 grid md:grid-cols-12 gap-12">

@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Fraunces, IBM_Plex_Mono, Jost, Manrope, Pacifico, Shrikhand } from "next/font/google";
+import { Anton, EB_Garamond, IBM_Plex_Mono, Jost, Manrope, Pacifico } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/lib/i18n";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Listen from "@/components/Listen";
 
-const shrikhand = Shrikhand({
+const anton = Anton({
   variable: "--font-disp",
   weight: "400",
   subsets: ["latin", "latin-ext"],
 });
 
-const fraunces = Fraunces({
+const garamond = EB_Garamond({
   variable: "--font-editorial",
   subsets: ["latin", "latin-ext"],
   style: ["normal", "italic"],
@@ -68,7 +68,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${shrikhand.variable} ${pacifico.variable} ${fraunces.variable} ${jost.variable} ${manrope.variable} ${plexMono.variable}`}
+      className={`${anton.variable} ${pacifico.variable} ${garamond.variable} ${jost.variable} ${manrope.variable} ${plexMono.variable}`}
     >
       <body className="min-h-screen flex flex-col">
         <LangProvider>

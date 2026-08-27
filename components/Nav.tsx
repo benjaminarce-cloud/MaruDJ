@@ -31,6 +31,8 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  if (pathname === "/") return null; // the home poster carries its own side rail
+
   return (
     <>
       <header className="fixed top-0 inset-x-0 z-50 mix-blend-difference text-white">
