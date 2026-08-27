@@ -31,6 +31,14 @@ export default function About() {
         </div>
       </section>
 
+      {/* statement */}
+      <section className="px-4 md:px-8 py-16 md:py-24 border-b hairline">
+        <p className="font-display leading-[1.1] text-[clamp(2.2rem,6vw,5.5rem)] glow-red max-w-5xl">
+          {t.home.statement2a} {t.home.statement2b}
+        </p>
+        <p className="text-muted text-lg mt-8 max-w-xl">{t.home.soundText}</p>
+      </section>
+
       <div className="px-4 md:px-8 py-16 md:py-24 grid md:grid-cols-12 gap-12">
         <div className="md:col-span-7 space-y-8 max-w-2xl">
           <Reveal>

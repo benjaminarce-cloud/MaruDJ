@@ -63,6 +63,14 @@ export const copy = {
       ],
       watchSet: "Watch the set",
       morningAfter: "The morning after — gallery",
+      scenes: [
+        { tag: "Golden hour", line: "The sun goes down. The volume goes up." },
+        { tag: "Peak time", line: "Beach houses, rooftops, dark rooms." },
+        { tag: "The floor", line: "Nobody remembers the tracklist. Everybody remembers the feeling." },
+        { tag: "Your city", line: "The next night is yours." },
+      ],
+      seeGallery: "Gallery",
+      seeVideo: "Video",
     },
     about: {
       title: "About",
@@ -179,6 +187,14 @@ export const copy = {
       ],
       watchSet: "Ver el set",
       morningAfter: "La mañana siguiente — galería",
+      scenes: [
+        { tag: "Golden hour", line: "Baja el sol. Sube el volumen." },
+        { tag: "Peak time", line: "Beach houses, rooftops, cuartos oscuros." },
+        { tag: "La pista", line: "Nadie recuerda el tracklist. Todos recuerdan la sensación." },
+        { tag: "Tu ciudad", line: "La próxima noche es tuya." },
+      ],
+      seeGallery: "Galería",
+      seeVideo: "Video",
     },
     about: {
       title: "About",
