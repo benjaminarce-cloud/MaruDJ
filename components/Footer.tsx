@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useLang } from "@/lib/i18n";
 import { site } from "@/content/site";
+import Socials from "@/components/Socials";
 
 export default function Footer() {
   const { t } = useLang();
@@ -15,12 +16,7 @@ export default function Footer() {
           <p className="font-display text-3xl mb-2">Maru Bravo</p>
           <p className="label">38.98° N — 1.43° E · Ibiza · Worldwide</p>
         </div>
-        <div className="flex flex-wrap gap-6">
-          <a href={site.socials.instagram} target="_blank" rel="noreferrer" className="label link-line hover:text-ink">Instagram</a>
-          <a href={site.socials.soundcloud} target="_blank" rel="noreferrer" className="label link-line hover:text-ink">SoundCloud</a>
-          <a href={site.socials.youtube} target="_blank" rel="noreferrer" className="label link-line hover:text-ink">YouTube</a>
-          <a href={site.socials.spotify} target="_blank" rel="noreferrer" className="label link-line hover:text-ink">Spotify</a>
-        </div>
+        <Socials className="text-ink/85" />
         <div className="md:text-right">
           <a href={`mailto:${site.bookingEmail}`} className="label link-line hover:text-ink block mb-2">
             {t.footer.bookings}: {site.bookingEmail}

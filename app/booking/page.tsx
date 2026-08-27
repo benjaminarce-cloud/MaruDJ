@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLang } from "@/lib/i18n";
 import { site } from "@/content/site";
+import Socials from "@/components/Socials";
 import Reveal from "@/components/Reveal";
 
 export default function Booking() {
@@ -40,12 +41,7 @@ export default function Booking() {
 
           <div className="mt-14 pt-8 border-t hairline">
             <p className="label mb-5">{t.booking.follow}</p>
-            <div className="flex flex-wrap gap-6">
-              <a href={site.socials.instagram} target="_blank" rel="noreferrer" className="label link-line hover:text-ink">Instagram</a>
-              <a href={site.socials.soundcloud} target="_blank" rel="noreferrer" className="label link-line hover:text-ink">SoundCloud</a>
-              <a href={site.socials.youtube} target="_blank" rel="noreferrer" className="label link-line hover:text-ink">YouTube</a>
-              <a href={site.socials.spotify} target="_blank" rel="noreferrer" className="label link-line hover:text-ink">Spotify</a>
-            </div>
+            <Socials className="text-ink/85" size={24} />
           </div>
         </Reveal>
 

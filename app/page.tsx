@@ -2,65 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { useLang } from "@/lib/i18n";
 import { site, venues, cities, heroReel, clips, gallery } from "@/content/site";
 import Ticker from "@/components/Ticker";
+import Socials from "@/components/Socials";
 import VideoLoop from "@/components/VideoLoop";
 
-/** cumulative minutes for the HUD clock at the top of each scene (20:30 → 06:00) */
-const SCENE_MINUTES = [1230, 1620, 1710, 1800];
-const SCENE_BPM = [112, 128, 126, 118];
-const SCENE_TIMES = ["20:30", "03:00", "04:30", "06:00"];
-
-function useNightProgress(count: number) {
-  const [state, setState] = useState({ clock: "20:30", bpm: 112, act: 0 });
-  const container = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = container.current;
-    if (!el) return;
-    let raf = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const sections = Array.from(el.querySelectorAll<HTMLElement>("[data-act]"));
-        if (!sections.length) return;
-        const center = window.scrollY + window.innerHeight * 0.5;
-        let i = 0;
-        let frac = 0;
-        for (let s = 0; s < sections.length; s++) {
-          const top = sections[s].offsetTop;
-          const next = s + 1 < sections.length ? sections[s + 1].offsetTop : top + sections[s].offsetHeight;
-          if (center >= top && center < next) {
-            i = s;
-            frac = Math.min(1, Math.max(0, (center - top) / (next - top)));
-            break;
-          }
-          if (center >= next) i = s + 1 < count ? s + 1 : s;
-        }
-        const m0 = SCENE_MINUTES[i];
-        const m1 = SCENE_MINUTES[Math.min(i + 1, count - 1)];
-        const mins = Math.round(m0 + (m1 - m0) * frac) % 1440;
-        const hh = String(Math.floor(mins / 60)).padStart(2, "0");
-        const mm = String(mins % 60).padStart(2, "0");
-        const b0 = SCENE_BPM[i];
-        const b1 = SCENE_BPM[Math.min(i + 1, count - 1)];
-        setState({ clock: `${hh}:${mm}`, bpm: Math.round(b0 + (b1 - b0) * frac), act: i });
-      });
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, [count]);
-
-  return { state, container };
-}
 
 /** the wall: photos + video loops interleaved, every tile near native size */
 const MOSAIC: ({ type: "photo"; i: number } | { type: "clip"; i: number })[] = [
@@ -86,8 +34,6 @@ const MOSAIC: ({ type: "photo"; i: number } | { type: "clip"; i: number })[] = [
 
 export default function Home() {
   const { t, lang } = useLang();
-  const { state, container } = useNightProgress(4);
-
   useEffect(() => {
     document.documentElement.classList.add("snap-night");
     return () => document.documentElement.classList.remove("snap-night");
@@ -96,18 +42,7 @@ export default function Home() {
   const scenes = t.home.scenes;
 
   return (
-    <div ref={container}>
-      {/* ======== HUD ======== */}
-      <div className="fixed bottom-0 inset-x-0 z-40 flex items-end justify-between px-4 md:px-8 pb-4 pointer-events-none">
-        <div>
-          <p className="label !text-ink/55">{scenes[state.act].tag}</p>
-          <p className="mono text-2xl md:text-4xl mt-1 tabular-nums glow-red">{state.clock}</p>
-        </div>
-        <p className="mono text-xs md:text-sm tabular-nums text-ink/60">
-          {String(state.act + 1).padStart(2, "0")}/04 · {state.bpm} BPM
-        </p>
-      </div>
-
+    <div>
       {/* ======== SCENE 01 — GOLDEN HOUR HERO (4K clip, name right so she pans free) ======== */}
       <section data-act className="snap-start relative h-svh min-h-[560px] overflow-hidden flex flex-col justify-end">
         <VideoLoop
@@ -246,20 +181,7 @@ export default function Home() {
           <a href={`mailto:${site.bookingEmail}`} className="font-display text-lg md:text-2xl underline underline-offset-8 decoration-2">
             {site.bookingEmail}
           </a>
-          <div className="flex gap-7">
-            {(
-              [
-                ["Instagram", site.socials.instagram],
-                ["SoundCloud", site.socials.soundcloud],
-                ["YouTube", site.socials.youtube],
-                ["Spotify", site.socials.spotify],
-              ] as const
-            ).map(([k, url]) => (
-              <a key={k} href={url} target="_blank" rel="noreferrer" className="label !text-ink/85 link-line">
-                {k}
-              </a>
-            ))}
-          </div>
+          <Socials className="text-ink" size={24} />
           <p className="label !text-ink/55">© {new Date().getFullYear()} Maru Bravo · Ibiza · Worldwide</p>
         </div>
       </section>
