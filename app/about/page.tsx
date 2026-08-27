@@ -90,7 +90,7 @@ export default function About() {
           items={cities}
           duration="44s"
           separator="✦"
-          itemClassName="font-display text-5xl md:text-8xl glow-amber leading-tight"
+          itemClassName="font-display text-5xl md:text-8xl glow-red leading-tight"
         />
       </div>
     </div>

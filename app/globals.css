@@ -5,9 +5,8 @@
   --surface: #170a0f;
   --ink: #fff5ec;
   --muted: #a08a90;
-  --accent: #ffb44d; /* amber — golden hour */
+  --accent: #ff8d7e; /* soft warm red */
   --pop: #ff2440; /* pacha red */
-  --pink: #ff4fd8; /* neon pink */
   --line: rgba(255, 245, 236, 0.16);
 }
 
@@ -18,7 +17,6 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-pop: var(--pop);
-  --color-pink: var(--pink);
   --color-line: var(--line);
   --font-sans: var(--font-manrope);
 }
@@ -86,26 +84,16 @@ body::after {
   text-shadow: 0 0 7px rgba(255, 36, 64, 0.95), 0 0 24px rgba(255, 36, 64, 0.75),
     0 0 70px rgba(255, 36, 64, 0.55), 0 0 140px rgba(255, 36, 64, 0.4);
 }
-.glow-pink {
-  color: var(--ink);
-  text-shadow: 0 0 7px rgba(255, 79, 216, 0.95), 0 0 24px rgba(255, 79, 216, 0.75),
-    0 0 70px rgba(255, 79, 216, 0.55), 0 0 140px rgba(255, 79, 216, 0.4);
-}
-.glow-amber {
-  color: var(--ink);
-  text-shadow: 0 0 7px rgba(255, 180, 77, 0.95), 0 0 24px rgba(255, 180, 77, 0.7),
-    0 0 70px rgba(255, 180, 77, 0.5), 0 0 140px rgba(255, 180, 77, 0.35);
-}
 .glow-soft {
   text-shadow: 0 0 30px rgba(255, 120, 60, 0.35), 0 2px 24px rgba(0, 0, 0, 0.5);
 }
 
 /* neon tube frame (like a sign on the wall) */
 .neon-frame {
-  border: 2.5px solid var(--pink);
+  border: 2.5px solid var(--pop);
   border-radius: 1.5rem;
-  box-shadow: 0 0 12px rgba(255, 79, 216, 0.7), inset 0 0 12px rgba(255, 79, 216, 0.5),
-    0 0 60px rgba(255, 79, 216, 0.35);
+  box-shadow: 0 0 12px rgba(255, 36, 64, 0.7), inset 0 0 12px rgba(255, 36, 64, 0.5),
+    0 0 60px rgba(255, 36, 64, 0.35);
 }
 
 .label {
@@ -166,48 +154,14 @@ body::after {
   filter: saturate(1.08) contrast(1.05);
 }
 
-/* red room wash — Pacha ceiling light */
-.wash-red {
-  position: relative;
-}
-.wash-red::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 20%, rgba(255, 36, 64, 0.55), rgba(120, 4, 24, 0.75));
-  mix-blend-mode: color;
-  pointer-events: none;
-}
-.wash-red::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: rgba(190, 12, 40, 0.28);
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
-
-/* magenta laser wash */
-.wash-pink::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 80%, rgba(255, 79, 216, 0.4), rgba(60, 5, 60, 0.6));
-  mix-blend-mode: color;
-  pointer-events: none;
-}
-
 /* media hover */
 .media-hover {
   overflow: hidden;
 }
-.media-hover img,
-.media-hover video {
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+.media-hover img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.media-hover:hover img,
-.media-hover:hover video {
+.media-hover:hover img {
   transform: scale(1.045);
 }
 

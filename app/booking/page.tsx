@@ -81,7 +81,7 @@ export default function Booking() {
             />
             <button
               type="submit"
-              className="border border-accent px-8 py-3 label !text-accent hover:bg-accent hover:!text-bg transition-colors cursor-pointer"
+              className="border border-pop px-8 py-3 label !text-pop hover:bg-pop hover:!text-bg transition-colors cursor-pointer"
             >
               {t.booking.send}
             </button>

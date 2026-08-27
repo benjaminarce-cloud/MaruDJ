@@ -23,7 +23,7 @@ export default function Agenda() {
             <p className="text-muted text-lg mb-10">{t.agenda.emptySub}</p>
             <Link
               href="/booking"
-              className="border border-accent px-7 py-3 label !text-accent hover:bg-accent hover:!text-bg transition-colors inline-block"
+              className="border border-pop px-7 py-3 label !text-pop hover:bg-pop hover:!text-bg transition-colors inline-block"
             >
               {t.agenda.request}
             </Link>
@@ -48,7 +48,7 @@ export default function Agenda() {
                     href={e.tickets}
                     target="_blank"
                     rel="noreferrer"
-                    className="label link-line !text-accent md:col-span-1"
+                    className="label link-line !text-pop md:col-span-1"
                   >
                     {t.agenda.tickets}
                   </a>

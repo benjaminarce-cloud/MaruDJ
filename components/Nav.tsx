@@ -79,7 +79,7 @@ export default function Nav() {
                 href={l.href}
                 onClick={() => setOpen(false)}
                 className={`font-display text-5xl leading-tight ${
-                  i % 2 ? "glow-pink" : "glow-red"
+                  i % 2 ? "glow-red" : ""
                 }`}
               >
                 {t.nav[l.key]}

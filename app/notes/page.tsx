@@ -25,7 +25,7 @@ export default function Notes() {
           <p className="text-muted text-lg mb-8">{t.notes.newsletter}</p>
           <a
             href={`mailto:${site.bookingEmail}?subject=${encodeURIComponent("Join the list")}`}
-            className="border border-accent px-7 py-3 label !text-accent hover:bg-accent hover:!text-bg transition-colors inline-block"
+            className="border border-pop px-7 py-3 label !text-pop hover:bg-pop hover:!text-bg transition-colors inline-block"
           >
             {t.notes.subscribe}
           </a>

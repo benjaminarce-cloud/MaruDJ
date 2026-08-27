@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/lib/i18n";
-import { site, venues, cities, genres, heroVideo, clips, stripPhotos } from "@/content/site";
+import { site, venues, cities, genres, heroVideo, clips, stripPhotos, gallery } from "@/content/site";
 import Ticker from "@/components/Ticker";
 import VideoLoop from "@/components/VideoLoop";
 
@@ -61,10 +61,27 @@ function useNightProgress(count: number) {
   return { state, container };
 }
 
-const GENRE_GLOW = ["glow-red", "glow-pink", "glow-amber", "glow-red"];
+/** small framed card for low-res phone clips — shown near native size so they stay sharp */
+function ClipCard({
+  clip,
+  className = "",
+}: {
+  clip: (typeof clips)[number];
+  className?: string;
+}) {
+  const { lang } = useLang();
+  return (
+    <figure className={`w-[68vw] max-w-[300px] md:max-w-[340px] ${className}`}>
+      <div className="relative aspect-[9/16] overflow-hidden rounded-2xl border border-line shadow-[0_0_40px_rgba(255,36,64,0.18)]">
+        <VideoLoop src={clip.src} poster={clip.poster} className="absolute inset-0 w-full h-full object-cover" />
+      </div>
+      <figcaption className="label mt-3 !text-ink/60">{clip.tag[lang]}</figcaption>
+    </figure>
+  );
+}
 
 export default function Home() {
-  const { t, lang } = useLang();
+  const { t } = useLang();
   const { state, container } = useNightProgress(7);
 
   useEffect(() => {
@@ -79,123 +96,110 @@ export default function Home() {
       {/* ======== HUD ======== */}
       <div className="fixed bottom-0 inset-x-0 z-40 flex items-end justify-between px-4 md:px-8 pb-4 pointer-events-none">
         <div>
-          <p className="label !text-ink/60">{acts[state.act].tag}</p>
-          <p className="mono text-3xl md:text-5xl mt-1 tabular-nums glow-red">{state.clock}</p>
+          <p className="label !text-ink/55">{acts[state.act].tag}</p>
+          <p className="mono text-2xl md:text-4xl mt-1 tabular-nums glow-red">{state.clock}</p>
         </div>
-        <div className="text-right">
-          <p className="label !text-ink/60">{String(state.act + 1).padStart(2, "0")} / 07</p>
-          <p className="mono text-sm md:text-base mt-1 tabular-nums text-ink/85">{state.bpm} BPM</p>
-        </div>
+        <p className="mono text-xs md:text-sm tabular-nums text-ink/60">
+          {String(state.act + 1).padStart(2, "0")}/07 · {state.bpm} BPM
+        </p>
       </div>
 
-      {/* ======== ACT 01 — THE BEACH ======== */}
-      <section data-act className="snap-start relative h-svh min-h-[560px] overflow-hidden flex flex-col justify-between">
-        <VideoLoop
-          src={clips[0].src}
-          poster={clips[0].poster}
-          eager
-          className="absolute inset-0 w-full h-full object-cover photo"
+      {/* ======== ACT 01 — THE BEACH (high-res photo, her shot leads) ======== */}
+      <section data-act className="snap-start relative h-svh min-h-[560px] overflow-hidden flex flex-col justify-end">
+        <Image
+          src={gallery[2].src}
+          alt={gallery[2].alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[50%_25%] photo"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-black/30" />
-        <div className="relative px-4 md:px-8 pt-20">
-          <p className="label !text-ink/80">{acts[0].tag} — 14:00</p>
-        </div>
-        <div className="relative px-4 md:px-8 pb-24 md:pb-20">
-          <h1 className="font-display leading-[1.02] text-[clamp(3.6rem,13vw,13rem)] glow-soft">
-            Maru
-            <span className="block -mt-[0.18em]">Bravo</span>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+        <div className="relative px-4 md:px-8 pb-20 md:pb-16">
+          <p className="label !text-ink/80 mb-3">{acts[0].tag} — 14:00</p>
+          <h1 className="font-display leading-[1.02] text-[clamp(3.2rem,11vw,10.5rem)] glow-soft">
+            Maru Bravo
           </h1>
-          <div className="flex items-end justify-between mt-4">
+          <div className="flex items-end justify-between mt-3">
             <p className="font-script text-xl md:text-3xl text-ink/95">{acts[0].line}</p>
-            <p className="label hidden md:block animate-bounce !text-ink/70">{t.home.scrollCue} ↓</p>
+            <p className="label hidden md:block animate-bounce !text-ink/60">{t.home.scrollCue} ↓</p>
           </div>
         </div>
       </section>
 
-      {/* ======== ACT 02 — GOLDEN HOUR (amber halo) ======== */}
-      <section data-act className="snap-start relative h-svh min-h-[560px] overflow-hidden flex items-center justify-center">
+      {/* ======== ACT 02 — GOLDEN HOUR (the 4K clip, full bleed, minimal text) ======== */}
+      <section data-act className="snap-start relative h-svh min-h-[560px] overflow-hidden flex flex-col justify-end">
         <VideoLoop
           src={heroVideo.src}
           poster={heroVideo.poster}
+          eager
           className="absolute inset-0 w-full h-full object-cover photo"
         />
-        <div className="absolute inset-0 bg-black/40" />
-        {/* Hï-style halo rings */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="halo-pulse w-[75vmin] h-[75vmin] rounded-full border-[10px] border-accent/50 blur-[6px]" />
-          <div className="absolute halo-pulse w-[55vmin] h-[55vmin] rounded-full border-[7px] border-accent/60 blur-[4px]" style={{ animationDelay: "1.2s" }} />
-          <div className="absolute halo-pulse w-[36vmin] h-[36vmin] rounded-full border-[5px] border-accent/70 blur-[3px]" style={{ animationDelay: "2.4s" }} />
-        </div>
-        <div className="relative text-center px-4 max-w-4xl">
-          <p className="label mb-6 !text-ink/80">{acts[1].tag} — 20:30</p>
-          <p className="font-script text-4xl md:text-7xl leading-snug glow-amber">
-            {t.hero.tagline}
-          </p>
-          <p className="text-ink/85 mt-6">{acts[1].line}</p>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+        <div className="relative px-4 md:px-8 pb-20 md:pb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <div>
+            <p className="label !text-ink/80 mb-3">{acts[1].tag} — 20:30</p>
+            <p className="font-script text-3xl md:text-5xl glow-soft">{t.hero.tagline}</p>
+          </div>
+          <p className="text-ink/75 text-sm max-w-xs md:text-right">{acts[1].line}</p>
         </div>
       </section>
 
-      {/* ======== ACT 03 — DOORS (neon signs on black) ======== */}
+      {/* ======== ACT 03 — DOORS (neon sign on black) ======== */}
       <section data-act className="snap-start relative min-h-svh flex flex-col items-center justify-center bg-bg py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(255,79,216,0.09),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(255,36,64,0.08),transparent_60%)]" />
         <p className="label mb-10">{acts[2].tag} — 23:59</p>
         <div className="neon-frame px-8 md:px-16 py-8 md:py-12 rotate-[-2deg]">
-          <p className="font-script text-5xl md:text-8xl glow-pink flicker leading-tight pr-3">
+          <p className="font-script text-5xl md:text-8xl glow-red flicker leading-tight pr-3">
             Maru Bravo
           </p>
         </div>
         <p className="mt-8 text-ink/70">{acts[2].line}</p>
-        <div className="mt-14 flex flex-col items-center gap-3 md:gap-4">
+        <p className="mt-12 font-display text-2xl md:text-4xl text-center leading-relaxed max-w-3xl px-4">
           {genres.map((g, i) => (
-            <p
-              key={g}
-              className={`font-display text-3xl md:text-6xl leading-tight ${GENRE_GLOW[i]} ${i % 2 ? "rotate-[1.2deg]" : "rotate-[-1.2deg]"}`}
-            >
-              {g}
-            </p>
+            <span key={g}>
+              <span className={`whitespace-nowrap ${i % 2 ? "glow-red" : "text-ink/90"}`}>{g}</span>
+              {i < genres.length - 1 && <span className="text-pop mx-3">✦</span>}
+            </span>
           ))}
-        </div>
+        </p>
       </section>
 
-      {/* ======== ACT 04 — PEAK TIME (red room) ======== */}
-      <section data-act className="snap-start relative h-svh min-h-[560px] overflow-hidden flex flex-col justify-center wash-red">
-        <div className="absolute inset-0 grid grid-cols-2">
-          <VideoLoop src={clips[5].src} poster={clips[5].poster} className="w-full h-full object-cover" />
-          <VideoLoop src={clips[2].src} poster={clips[2].poster} className="w-full h-full object-cover" />
-        </div>
-        <div className="absolute inset-0 z-[2] bg-gradient-to-t from-black/60 via-transparent to-black/30" />
-        <div className="relative z-[3] px-4 md:px-8 text-center md:text-left">
-          <p className="label mb-6 !text-ink/85">{acts[3].tag} — 03:00</p>
-          <h2 className="font-display leading-[1.02] text-[clamp(2.6rem,8.5vw,8.5rem)] glow-red">
-            {t.home.statement2a}
-            <span className="block">{t.home.statement2b}</span>
-          </h2>
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 mt-10">
+      {/* ======== ACT 04 — PEAK TIME (clips at native size on a red-lit floor) ======== */}
+      <section data-act className="snap-start relative min-h-svh flex flex-col justify-center bg-bg py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_100%,rgba(255,36,64,0.22),transparent_65%)]" />
+        <div className="relative px-4 md:px-8 grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <p className="label mb-5">{acts[3].tag} — 03:00</p>
+            <h2 className="font-display leading-[1.05] text-[clamp(2.4rem,6vw,5.5rem)] glow-red">
+              {t.home.statement2a}
+              <span className="block">{t.home.statement2b}</span>
+            </h2>
+            <p className="text-ink/70 mt-6 max-w-md">{t.home.soundText}</p>
             <Link
               href="/video"
-              className="rounded-full border-2 border-ink/90 px-8 py-3.5 font-display text-lg md:text-xl hover:bg-ink hover:text-pop transition-colors shadow-[0_0_30px_rgba(255,36,64,0.5)]"
+              className="mt-8 inline-block rounded-full border-2 border-pop px-8 py-3.5 font-display text-lg text-ink hover:bg-pop transition-colors"
             >
               {t.home.watchSet} →
             </Link>
           </div>
+          <div className="flex gap-4 md:gap-6 justify-center md:justify-end">
+            <ClipCard clip={clips[5]} className="translate-y-6" />
+            <ClipCard clip={clips[2]} className="-translate-y-2 hidden sm:block" />
+          </div>
         </div>
       </section>
 
-      {/* ======== ACT 05 — THE FLOOR (pink lasers) ======== */}
-      <section data-act className="snap-start relative h-svh min-h-[560px] overflow-hidden flex flex-col justify-center wash-pink">
-        <VideoLoop
-          src={clips[6].src}
-          poster={clips[6].poster}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 z-[1] bg-bg/45" />
-        <div className="relative z-[2]">
-          <p className="label px-4 md:px-8 mb-8 !text-ink/85">{acts[4].tag} — 04:30 · {t.home.venuesLabel}</p>
+      {/* ======== ACT 05 — THE FLOOR (venues; one small clip) ======== */}
+      <section data-act className="snap-start relative min-h-svh flex flex-col justify-center bg-bg py-24 overflow-hidden border-y hairline">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,rgba(255,36,64,0.1),transparent_55%)]" />
+        <div className="relative">
+          <p className="label px-4 md:px-8 mb-8">{acts[4].tag} — 04:30 · {t.home.venuesLabel}</p>
           <Ticker
             items={venues}
             duration="34s"
             separator="✦"
-            itemClassName="font-display text-5xl md:text-8xl leading-tight glow-pink [&>span:nth-child(2)]:text-pink"
+            itemClassName="font-display text-5xl md:text-8xl leading-tight glow-red [&>span:nth-child(2)]:text-pop"
           />
           <Ticker
             items={cities}
@@ -203,34 +207,37 @@ export default function Home() {
             duration="40s"
             separator="✦"
             className="mt-2 md:mt-4"
-            itemClassName="font-display text-5xl md:text-8xl leading-tight text-ink/95 [&>span:nth-child(2)]:text-pop"
+            itemClassName="font-display text-5xl md:text-8xl leading-tight text-ink/90 [&>span:nth-child(2)]:text-pop"
           />
-          <p className="font-script text-2xl md:text-3xl text-ink/90 px-4 md:px-8 mt-10 max-w-xl">
-            {acts[4].line}
-          </p>
+          <div className="px-4 md:px-8 mt-12 flex flex-col md:flex-row items-start md:items-center gap-8">
+            <ClipCard clip={clips[6]} />
+            <p className="font-script text-2xl md:text-3xl text-ink/90 max-w-md">{acts[4].line}</p>
+          </div>
         </div>
       </section>
 
-      {/* ======== ACT 06 — SUNRISE (Ushuaïa dusk) ======== */}
+      {/* ======== ACT 06 — SUNRISE (high-res golden photo) ======== */}
       <section data-act className="snap-start relative min-h-svh overflow-hidden flex flex-col justify-between py-20">
-        <VideoLoop
-          src={clips[4].src}
-          poster={clips[4].poster}
-          className="absolute inset-0 w-full h-full object-cover photo"
+        <Image
+          src={gallery[0].src}
+          alt={gallery[0].alt}
+          fill
+          sizes="100vw"
+          className="object-cover object-[50%_30%] photo"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#2a0a35]/70 via-transparent to-bg" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-transparent to-bg" />
         <div className="relative px-4 md:px-8">
           <p className="label !text-ink/80">{acts[5].tag} — 06:00</p>
-          <p className="font-script text-3xl md:text-6xl leading-snug mt-5 max-w-3xl glow-amber">
+          <p className="font-script text-3xl md:text-5xl leading-snug mt-4 max-w-2xl glow-soft">
             {acts[5].line}
           </p>
         </div>
         <div className="relative">
-          <div className="grid grid-cols-2 md:grid-cols-4 px-4 md:px-8 gap-6 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 px-4 md:px-8 gap-6 mb-10">
             {t.home.stats.map((s) => (
               <div key={s.t}>
-                <p className="font-display text-4xl md:text-6xl glow-amber">{s.n}</p>
-                <p className="label mt-2 !text-ink/75">{s.t}</p>
+                <p className="font-display text-4xl md:text-6xl text-ink">{s.n}</p>
+                <p className="label mt-2 !text-ink/70">{s.t}</p>
               </div>
             ))}
           </div>
@@ -238,14 +245,14 @@ export default function Home() {
             {[0, 1].map((n) => (
               <div key={n} className="flex gap-2 pr-2" aria-hidden={n === 1}>
                 {stripPhotos.map((p) => (
-                  <Link key={`${n}-${p.src}`} href="/gallery" className="media-hover block relative h-[160px] md:h-[220px] shrink-0 overflow-hidden rounded-xl" style={{ aspectRatio: `${p.w}/${p.h}` }}>
+                  <Link key={`${n}-${p.src}`} href="/gallery" className="media-hover block relative h-[150px] md:h-[210px] shrink-0 overflow-hidden rounded-xl" style={{ aspectRatio: `${p.w}/${p.h}` }}>
                     <Image src={p.src} alt={p.alt} fill sizes="240px" className="object-cover photo" />
                   </Link>
                 ))}
               </div>
             ))}
           </div>
-          <Link href="/gallery" className="label link-line !text-accent inline-block mt-6 px-4 md:px-8">
+          <Link href="/gallery" className="label link-line !text-pop inline-block mt-6 px-4 md:px-8">
             {t.home.morningAfter} →
           </Link>
         </div>
@@ -255,21 +262,20 @@ export default function Home() {
       <section
         data-act
         className="snap-start relative min-h-svh flex flex-col justify-between pt-24 pb-24 px-4 md:px-8 overflow-hidden"
-        style={{ background: "radial-gradient(ellipse at 50% 30%, #c9102e, #57000f 75%, #2b0008)" }}
+        style={{ background: "radial-gradient(ellipse at 50% 30%, #a30d26, #4a000d 75%, #240007)" }}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_110%,rgba(255,180,77,0.25),transparent_55%)]" />
         <div className="relative">
           <p className="label !text-ink/80">{acts[6].tag}</p>
-          <p className="label !text-ink/60 mt-1">{t.home.bookSub}</p>
+          <p className="label !text-ink/55 mt-1">{t.home.bookSub}</p>
         </div>
         <Link href="/booking" className="relative group block text-center">
-          <p className="font-display leading-[1] text-[clamp(3.4rem,13vw,13rem)] glow-red group-hover:scale-[1.02] transition-transform">
+          <p className="font-display leading-[1] text-[clamp(3.2rem,12vw,12rem)] glow-red group-hover:scale-[1.02] transition-transform">
             {t.home.book}
           </p>
           <p className="font-script text-2xl md:text-4xl text-ink/90 mt-4">{acts[6].line}</p>
         </Link>
         <div className="relative flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <a href={`mailto:${site.bookingEmail}`} className="font-display text-lg md:text-2xl underline underline-offset-8 decoration-2 hover:glow-red">
+          <a href={`mailto:${site.bookingEmail}`} className="font-display text-lg md:text-2xl underline underline-offset-8 decoration-2">
             {site.bookingEmail}
           </a>
           <div className="flex gap-7">
@@ -286,7 +292,7 @@ export default function Home() {
               </a>
             ))}
           </div>
-          <p className="label !text-ink/60">© {new Date().getFullYear()} Maru Bravo · Ibiza · Worldwide</p>
+          <p className="label !text-ink/55">© {new Date().getFullYear()} Maru Bravo · Ibiza · Worldwide</p>
         </div>
       </section>
     </div>
