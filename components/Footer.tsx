@@ -1,10 +1,13 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useLang } from "@/lib/i18n";
 import { site } from "@/content/site";
 
 export default function Footer() {
   const { t } = useLang();
+  const pathname = usePathname();
+  if (pathname === "/") return null; // home ends on the volt act
   return (
     <footer className="border-t hairline px-5 md:px-10 py-10 mt-24">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">

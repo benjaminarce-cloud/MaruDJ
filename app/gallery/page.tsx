@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n";
 import { gallery } from "@/content/site";
-import Reveal from "@/components/Reveal";
 
 export default function Gallery() {
   const { t } = useLang();
@@ -13,9 +12,7 @@ export default function Gallery() {
   const close = useCallback(() => setActive(null), []);
   const step = useCallback(
     (dir: 1 | -1) =>
-      setActive((a) =>
-        a === null ? a : (a + dir + gallery.length) % gallery.length
-      ),
+      setActive((a) => (a === null ? a : (a + dir + gallery.length) % gallery.length)),
     []
   );
 
@@ -35,28 +32,35 @@ export default function Gallery() {
   }, [active, close, step]);
 
   return (
-    <div className="pt-28 md:pt-36 px-5 md:px-10">
-      <Reveal>
-        <h1 className="font-display text-6xl md:text-9xl leading-none mb-12 md:mb-16">
-          {t.gallery.title}
-        </h1>
-      </Reveal>
+    <div className="pt-24 md:pt-32">
+      <div className="px-4 md:px-8 mb-10 md:mb-14 flex items-end justify-between">
+        <h1 className="font-display text-6xl md:text-9xl leading-none">{t.gallery.title}</h1>
+        <p className="label mb-2 hidden md:block">
+          CONTACT SHEET — {String(gallery.length).padStart(2, "0")} FRAMES
+        </p>
+      </div>
 
-      <div className="columns-2 md:columns-3 gap-4 [&>*]:mb-4">
+      {/* contact sheet */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-px bg-line border-y hairline">
         {gallery.map((p, i) => (
           <button
             key={p.src}
             onClick={() => setActive(i)}
-            className="block w-full cursor-zoom-in group"
+            className="group relative bg-bg cursor-zoom-in"
           >
-            <Image
-              src={p.src}
-              alt={p.alt}
-              width={p.w}
-              height={p.h}
-              sizes="(min-width: 768px) 33vw, 50vw"
-              className="w-full h-auto photo group-hover:opacity-80 transition-opacity"
-            />
+            <div className="relative aspect-square overflow-hidden">
+              <Image
+                src={p.src}
+                alt={p.alt}
+                fill
+                sizes="(min-width: 1024px) 17vw, (min-width: 640px) 25vw, 50vw"
+                className="object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:contrast-100 transition-[filter] duration-300"
+              />
+              <span className="absolute inset-0 ring-inset ring-pop opacity-0 group-hover:opacity-100 group-hover:ring-2 transition-opacity" />
+            </div>
+            <p className="label !text-[9px] px-2 py-1.5 text-left group-hover:!text-pop transition-colors">
+              MB_{String(i + 1).padStart(3, "0")}
+            </p>
           </button>
         ))}
       </div>
@@ -66,18 +70,15 @@ export default function Gallery() {
           className="fixed inset-0 z-[60] bg-bg/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-12"
           onClick={close}
         >
-          <button
-            onClick={close}
-            className="absolute top-6 right-6 label hover:text-ink z-10 cursor-pointer"
-          >
-            ✕
+          <p className="absolute top-6 left-6 label">
+            MB_{String(active + 1).padStart(3, "0")} / {String(gallery.length).padStart(3, "0")}
+          </p>
+          <button onClick={close} className="absolute top-6 right-6 label hover:!text-pop z-10 cursor-pointer">
+            ✕ ESC
           </button>
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              step(-1);
-            }}
-            className="absolute left-4 md:left-8 font-display text-3xl hover:text-accent z-10 cursor-pointer"
+            onClick={(e) => { e.stopPropagation(); step(-1); }}
+            className="absolute left-4 md:left-8 font-display text-3xl hover:text-pop z-10 cursor-pointer"
             aria-label="Previous"
           >
             ←
@@ -92,11 +93,8 @@ export default function Gallery() {
             />
           </div>
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              step(1);
-            }}
-            className="absolute right-4 md:right-8 font-display text-3xl hover:text-accent z-10 cursor-pointer"
+            onClick={(e) => { e.stopPropagation(); step(1); }}
+            className="absolute right-4 md:right-8 font-display text-3xl hover:text-pop z-10 cursor-pointer"
             aria-label="Next"
           >
             →

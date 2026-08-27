@@ -27,6 +27,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* homepage night mode: acts snap into place */
+html.snap-night {
+  scroll-snap-type: y proximity;
+}
+
 body {
   background: var(--bg);
   color: var(--ink);
