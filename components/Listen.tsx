@@ -4,6 +4,9 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useLang } from "@/lib/i18n";
 import { site } from "@/content/site";
+import { ICONS } from "@/components/Socials";
+
+const soundcloudPath = ICONS.find((i) => i.name === "SoundCloud")!.path;
 
 const playerSrc =
   "https://w.soundcloud.com/player/?url=" +
@@ -14,19 +17,22 @@ export default function Listen() {
   const { t } = useLang();
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  if (pathname === "/" || pathname === "/epk") return null; // home has its Listen tab; the press kit stays print-pure
+  if (pathname === "/epk") return null; // the press kit stays print-pure
 
   return (
-    <div className="no-print fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
+    <div className="no-print fixed bottom-5 right-5 z-50">
       {open ? (
-        <div className="w-[min(92vw,440px)] rounded-2xl overflow-hidden border border-pop/60 bg-bg shadow-[0_0_40px_rgba(232,163,61,0.35)]">
-          <div className="flex items-center justify-between px-4 py-2">
-            <p className="label !text-ink/80">
-              <span className="text-pop flicker">●</span> Maru Bravo — SoundCloud
-            </p>
+        <div className="w-[min(92vw,380px)] overflow-hidden border hairline bg-bg">
+          <div className="flex items-center justify-between gap-4 px-3.5 py-2.5 border-b hairline">
+            <span className="flex items-center gap-2 text-[10px] tracking-[0.24em] uppercase opacity-70">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                <path d={soundcloudPath} />
+              </svg>
+              SoundCloud
+            </span>
             <button
               onClick={() => setOpen(false)}
-              className="label hover:!text-pop cursor-pointer"
+              className="text-[10px] tracking-[0.24em] uppercase opacity-60 hover:opacity-100 hover:text-pop cursor-pointer transition-colors"
               aria-label="Close player"
             >
               ✕
@@ -35,7 +41,7 @@ export default function Listen() {
           <iframe
             title="Maru Bravo on SoundCloud"
             width="100%"
-            height="166"
+            height="120"
             allow="autoplay"
             src={playerSrc}
           />
@@ -43,9 +49,13 @@ export default function Listen() {
       ) : (
         <button
           onClick={() => setOpen(true)}
-          className="cursor-pointer rounded-full border-2 border-pop bg-bg/70 backdrop-blur-sm px-6 py-2.5 font-display text-base md:text-lg text-ink hover:bg-pop hover:text-bg transition-colors shadow-[0_0_30px_rgba(232,163,61,0.4)]"
+          aria-label={`${t.hero.listen} — SoundCloud`}
+          className="group flex items-center gap-2.5 border hairline bg-bg/85 backdrop-blur-sm px-3.5 py-2.5 text-ink/75 hover:text-pop hover:border-pop/60 cursor-pointer transition-colors"
         >
-          ▶ {t.hero.listen}
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+            <path d={soundcloudPath} />
+          </svg>
+          <span className="text-[10px] tracking-[0.24em] uppercase">{t.hero.listen}</span>
         </button>
       )}
     </div>

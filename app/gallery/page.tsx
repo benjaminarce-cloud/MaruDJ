@@ -5,8 +5,6 @@ import { useCallback, useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n";
 import { gallery } from "@/content/site";
 
-const BW = (contrast: number) => `grayscale(1) contrast(${contrast})`;
-
 export default function Gallery() {
   const { t } = useLang();
   const [active, setActive] = useState<number | null>(null);
@@ -58,8 +56,7 @@ export default function Gallery() {
                 alt={p.alt}
                 fill
                 sizes="(min-width: 768px) 25vw, 50vw"
-                className="object-cover"
-                style={{ filter: BW(1.12) }}
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               />
               <span className="absolute bottom-2 left-2.5 text-[9px] tracking-[0.2em] uppercase text-ink/0 group-hover:text-ink/75 transition-colors">
                 MB_{String(i + 1).padStart(3, "0")}
@@ -98,7 +95,6 @@ export default function Gallery() {
               fill
               sizes="100vw"
               className="object-contain"
-              style={{ filter: BW(1.08) }}
             />
           </div>
           <button

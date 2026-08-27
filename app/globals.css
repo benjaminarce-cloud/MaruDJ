@@ -64,14 +64,16 @@ body::after {
   color: var(--bg);
 }
 
+/* amber focus ring — the browser default blue fights the palette */
+:focus-visible {
+  outline: 2px solid var(--pop);
+  outline-offset: 2px;
+}
+
 /* poster display — Anton */
 .font-display {
   font-family: var(--font-disp), sans-serif;
   letter-spacing: -0.005em;
-}
-/* neon sign script */
-.font-script {
-  font-family: var(--font-script), cursive;
 }
 .mono {
   font-family: var(--font-mono), monospace;
@@ -161,6 +163,16 @@ body::after {
   filter: saturate(1.08) contrast(1.05);
 }
 
+/* b/w tile that returns to full colour on hover (--bw-c = per-photo contrast) */
+.bw-tile {
+  filter: grayscale(1) contrast(var(--bw-c, 1.12));
+  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.bw-tile:hover,
+.bw-tile:focus-visible {
+  filter: none;
+}
+
 /* media hover */
 .media-hover {
   overflow: hidden;
@@ -196,19 +208,98 @@ body::after {
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
 
-/* ======== PRINT (EPK → PDF: landscape full-bleed spreads) ======== */
+/* ======== PRINT (EPK → PDF: landscape full-bleed spreads) ========
+   Each spread is pinned to the physical page box (11in × 8.5in) instead of
+   the viewport, so the PDF keeps the proportions seen on screen. Type is
+   sized against --sheet-w rather than vw for the same reason. */
 @media print {
-  @page { size: landscape; margin: 0; }
+  @page {
+    size: 11in 8.5in;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: 11in;
+    background: var(--bg);
+  }
   body::after { display: none; }
-  header, .no-print { display: none !important; }
-  body { background: #060606; }
+  header,
+  .no-print {
+    display: none !important;
+  }
+  body,
+  main {
+    display: block !important;
+  }
   * {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
-  .print-page {
+
+  .epk-sheet {
+    --sheet-w: 11in;
+    width: 11in;
+  }
+  .epk-sheet .print-page {
+    position: relative !important;
+    width: 11in !important;
+    height: 8.5in !important;
+    min-height: 0 !important;
+    max-height: 8.5in !important;
+    overflow: hidden !important;
+    break-inside: avoid;
     break-after: page;
-    height: 100vh;
-    min-height: 0;
+  }
+  .epk-sheet .print-page:last-of-type {
+    break-after: auto;
+  }
+
+  /* Chrome does not apply the md: breakpoint when printing, so every spread
+     would otherwise render in its stacked mobile layout. Restate the wide
+     layout here in page units. */
+  .epk-corners {
+    padding-left: 0.55in;
+    padding-right: 0.55in;
+  }
+  .epk-corner-mid {
+    display: block !important;
+  }
+
+  .epk-about {
+    padding: 0.6in 0.55in !important;
+  }
+  .epk-about-grid {
+    display: grid !important;
+    grid-template-columns: 1.05fr 1fr !important;
+    gap: 0.5in !important;
+    align-items: center !important;
+    max-width: none !important;
+  }
+  .epk-about-photo {
+    aspect-ratio: 3 / 4 !important;
+    max-height: 6.6in;
+  }
+  .epk-about-copy {
+    max-width: 40ch;
+    padding-left: 0;
+  }
+
+  .epk-rooms-strip {
+    bottom: 0.42in;
+    padding-left: 0.55in;
+    padding-right: 0.55in;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+  }
+
+  .epk-close-row {
+    flex-direction: row !important;
+    align-items: flex-end !important;
+    padding: 0 0.55in 0.5in !important;
+  }
+  .epk-close-contact {
+    text-align: right;
   }
 }

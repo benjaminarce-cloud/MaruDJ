@@ -46,7 +46,7 @@ export const copy = {
       listen: "Listen",
     },
     home: {
-      side: { rooms: "Rooms", archive: "Archive", interview: "Interview", listen: "Listen", booking: "Booking" },
+      side: { home: "Home", epk: "EPK", bookings: "Bookings" },
       hero: {
         presents: "Ibiza · presents",
         tagline: "An experience beyond music",
@@ -208,7 +208,7 @@ export const copy = {
       listen: "Escuchar",
     },
     home: {
-      side: { rooms: "Salas", archive: "Archivo", interview: "Entrevista", listen: "Escuchar", booking: "Booking" },
+      side: { home: "Inicio", epk: "EPK", bookings: "Bookings" },
       hero: {
         presents: "Ibiza · presenta",
         tagline: "Una experiencia más allá de la música",

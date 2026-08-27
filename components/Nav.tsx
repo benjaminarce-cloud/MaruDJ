@@ -39,7 +39,7 @@ export default function Nav() {
           <Link
             href="/"
             onClick={() => setOpen(false)}
-            className="font-script text-xl"
+            className="font-display uppercase text-lg md:text-xl leading-none"
           >
             Maru Bravo
           </Link>

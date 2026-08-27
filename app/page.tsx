@@ -13,26 +13,28 @@ type Tab = "archive" | "interview" | "listen" | "booking";
 const BW = (contrast: number, brightness?: number) =>
   `grayscale(1) contrast(${contrast})${brightness ? ` brightness(${brightness})` : ""}`;
 
-/* the archive wall: strongest frames + every clip, looping — b/w like the poster */
+/* The archive wall: strongest frames + every clip, looping.
+   Clip slots are deliberately irregular (2, 5, 7, 8, 11, 13, 14) so the videos
+   never line up in the same columns of the 4-up grid. */
 const ARCHIVE: (
   | { type: "photo"; src: string; alt: string; c: number }
   | { type: "clip"; i: number }
 )[] = [
   { type: "photo", src: "/photos/photo-26.jpg", alt: "Golden hour rooftop set", c: 1.1 },
-  { type: "clip", i: 5 }, // peak time red
   { type: "photo", src: "/photos/photo-24.jpg", alt: "Red neon booth, Pioneer decks", c: 1.22 },
-  { type: "clip", i: 1 }, // rooftop golden hour
+  { type: "clip", i: 5 }, // peak time, red
   { type: "photo", src: "/photos/photo-05.jpg", alt: "Motion-blurred moment behind the booth", c: 1.18 },
-  { type: "clip", i: 6 }, // on the floor
   { type: "photo", src: "/photos/photo-25.jpg", alt: "Night out at Roto", c: 1.14 },
-  { type: "clip", i: 4 }, // rooftop pool
+  { type: "clip", i: 1 }, // rooftop, golden hour
   { type: "photo", src: "/photos/photo-29.jpg", alt: "Club set under lasers", c: 1.2 },
-  { type: "clip", i: 0 }, // beach house
+  { type: "clip", i: 6 }, // on the floor
+  { type: "clip", i: 4 }, // rooftop pool
   { type: "photo", src: "/photos/photo-28.jpg", alt: "Playing by the sea", c: 1.12 },
-  { type: "clip", i: 2 }, // la victoria night
   { type: "photo", src: "/photos/photo-21.jpg", alt: "Black and white studio portrait", c: 1.1 },
-  { type: "clip", i: 3 }, // by the sea
+  { type: "clip", i: 0 }, // beach house
   { type: "photo", src: "/photos/photo-27.jpg", alt: "Rooftop decks at golden hour", c: 1.1 },
+  { type: "clip", i: 2 }, // la victoria, night
+  { type: "clip", i: 3 }, // by the sea
   { type: "photo", src: "/photos/photo-18.jpg", alt: "Editorial portrait with headphones", c: 1.08 },
 ];
 
@@ -68,55 +70,43 @@ export default function Home() {
     setTab(next);
     document.getElementById("tabs")?.scrollIntoView({ behavior: "smooth" });
   };
-  const goRails = () => document.getElementById("rails")?.scrollIntoView({ behavior: "smooth" });
 
-  const sideTabs: { key: Tab; label: string }[] = [
-    { key: "archive", label: h.side.archive },
-    { key: "interview", label: h.side.interview },
-    { key: "listen", label: h.side.listen },
-    { key: "booking", label: h.side.booking },
+  const tabItems: { key: Tab; label: string }[] = [
+    { key: "archive", label: h.tabs.archive },
+    { key: "interview", label: h.tabs.interview },
+    { key: "listen", label: h.tabs.listen },
+    { key: "booking", label: h.tabs.booking },
   ];
 
   return (
     <div className="bg-bg" style={{ fontFamily: "var(--font-mono), monospace" }}>
-      {/* fixed side rail */}
-      <div className="fixed top-0 left-0 bottom-0 w-10 md:w-[58px] z-[60] border-r hairline flex flex-col items-center justify-between py-4 bg-bg">
-        <a
-          href="#top"
-          onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-          className="text-[10px] tracking-[0.2em] uppercase [writing-mode:vertical-rl] hover:text-pop transition-colors"
+      {/* fixed side rail — home / epk / bookings */}
+      <div className="fixed top-0 left-0 bottom-0 w-12 md:w-[66px] z-[60] border-r hairline flex flex-col items-center justify-center gap-12 bg-bg">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="text-[13px] md:text-[14px] tracking-[0.2em] uppercase [writing-mode:vertical-rl] cursor-pointer hover:text-pop transition-colors"
         >
-          MB
-        </a>
-        <div className="flex flex-col gap-6 items-center text-[10px] tracking-[0.22em] uppercase">
-          <button onClick={goRails} className="[writing-mode:vertical-rl] cursor-pointer hover:text-pop transition-colors">
-            {h.side.rooms}
-          </button>
-          {sideTabs.map((s) => (
-            <button
-              key={s.key}
-              onClick={() => go(s.key)}
-              className={`[writing-mode:vertical-rl] cursor-pointer transition-colors ${
-                s.key === "booking" ? "text-pop hover:text-ink" : "hover:text-pop"
-              }`}
-            >
-              {s.label}
-            </button>
-          ))}
-        </div>
+          {h.side.home}
+        </button>
+        <Link href="/epk" className="text-[13px] md:text-[14px] tracking-[0.2em] uppercase [writing-mode:vertical-rl] hover:text-pop transition-colors">
+          {h.side.epk}
+        </Link>
+        <button
+          onClick={() => go("booking")}
+          className="text-[13px] md:text-[14px] tracking-[0.2em] uppercase [writing-mode:vertical-rl] text-pop cursor-pointer hover:text-ink transition-colors"
+        >
+          {h.side.bookings}
+        </button>
         <button
           onClick={() => setLang(lang === "en" ? "es" : "en")}
           aria-label="Switch language"
-          className="text-[10px] tracking-[0.2em] uppercase [writing-mode:vertical-rl] opacity-60 cursor-pointer hover:opacity-100 hover:text-pop transition-colors"
+          className="absolute bottom-5 text-[12px] tracking-[0.2em] uppercase [writing-mode:vertical-rl] opacity-60 cursor-pointer hover:opacity-100 hover:text-pop transition-colors"
         >
           {lang === "en" ? "ES" : "EN"}
         </button>
       </div>
 
-      <div className="pl-10 md:pl-[58px]">
+      <div className="pl-12 md:pl-[66px]">
         {/* ======== HERO ======== */}
         <section id="top" className="relative min-h-svh flex flex-col justify-center px-5 md:px-[26px] pt-[70px] pb-[26px] overflow-hidden">
           <Image
@@ -224,16 +214,20 @@ export default function Home() {
 
         {/* ======== TABS ======== */}
         <section id="tabs" className="border-t hairline min-h-svh">
-          <div className="sticky top-0 z-50 flex bg-bg border-b hairline">
-            {sideTabs.map((s, i) => (
+          <div className="sticky top-0 z-50 flex bg-bg border-y hairline shadow-[0_10px_30px_rgba(6,6,6,0.85)]">
+            {tabItems.map((s, i) => (
               <button
                 key={s.key}
                 onClick={() => setTab(s.key)}
-                className={`flex-1 py-[18px] px-2 md:px-3.5 text-[9px] md:text-[10.5px] tracking-[0.24em] uppercase cursor-pointer transition-colors ${
-                  i < sideTabs.length - 1 ? "border-r hairline" : ""
-                } ${tab === s.key ? "bg-ink text-bg" : "opacity-60 hover:opacity-100"}`}
+                className={`relative flex-1 py-[18px] px-2 md:px-3.5 text-[9px] md:text-[10.5px] tracking-[0.24em] uppercase cursor-pointer transition-colors ${
+                  i < tabItems.length - 1 ? "border-r hairline" : ""
+                } ${
+                  tab === s.key
+                    ? "bg-pop text-bg"
+                    : "text-ink/60 hover:text-pop hover:bg-ink/[0.04]"
+                }`}
               >
-                {t.home.tabs[s.key]}
+                {s.label}
               </button>
             ))}
           </div>
@@ -251,21 +245,24 @@ export default function Home() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 mt-[22px]">
                 {ARCHIVE.map((m) =>
                   m.type === "photo" ? (
-                    <div key={m.src} className="relative aspect-[3/4] overflow-hidden bg-black">
+                    <div
+                      key={m.src}
+                      className="bw-tile relative aspect-[3/4] overflow-hidden bg-black"
+                      style={{ "--bw-c": m.c } as React.CSSProperties}
+                    >
                       <Image
                         src={m.src}
                         alt={m.alt}
                         fill
                         sizes="(min-width: 768px) 25vw, 50vw"
                         className="object-cover"
-                        style={{ filter: BW(m.c) }}
                       />
                     </div>
                   ) : (
                     <div
                       key={clips[m.i].src}
-                      className="relative aspect-[3/4] overflow-hidden bg-black"
-                      style={{ filter: BW(1.15) }}
+                      className="bw-tile relative aspect-[3/4] overflow-hidden bg-black"
+                      style={{ "--bw-c": 1.15 } as React.CSSProperties}
                     >
                       <VideoLoop
                         src={clips[m.i].src}

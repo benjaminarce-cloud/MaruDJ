@@ -1,6 +1,6 @@
 import { site } from "@/content/site";
 
-const ICONS = [
+export const ICONS = [
   {
     name: "Instagram",
     href: site.socials.instagram,

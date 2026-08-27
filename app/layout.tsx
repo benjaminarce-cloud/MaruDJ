@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, EB_Garamond, IBM_Plex_Mono, Jost, Manrope, Pacifico } from "next/font/google";
+import { Anton, EB_Garamond, IBM_Plex_Mono, Jost, Manrope } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/lib/i18n";
 import Nav from "@/components/Nav";
@@ -22,12 +22,6 @@ const jost = Jost({
   variable: "--font-geo",
   subsets: ["latin", "latin-ext"],
   style: ["normal", "italic"],
-});
-
-const pacifico = Pacifico({
-  variable: "--font-script",
-  weight: "400",
-  subsets: ["latin", "latin-ext"],
 });
 
 const manrope = Manrope({
@@ -68,7 +62,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${anton.variable} ${pacifico.variable} ${garamond.variable} ${jost.variable} ${manrope.variable} ${plexMono.variable}`}
+      className={`${anton.variable} ${garamond.variable} ${jost.variable} ${manrope.variable} ${plexMono.variable}`}
     >
       <body className="min-h-screen flex flex-col">
         <LangProvider>

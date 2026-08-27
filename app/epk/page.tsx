@@ -9,9 +9,9 @@ const BW = (contrast: number, brightness: number) =>
 
 function Corners({ labels }: { labels: readonly string[] }) {
   return (
-    <div className="absolute top-0 inset-x-0 z-10 flex justify-between px-7 md:px-12 pt-7 text-[10px] tracking-[0.28em] uppercase opacity-70">
+    <div className="epk-corners absolute top-0 inset-x-0 z-10 flex justify-between px-7 md:px-12 pt-7 text-[10px] tracking-[0.28em] uppercase opacity-70">
       <span>{labels[0]}</span>
-      <span className="hidden md:block">{labels[1]}</span>
+      <span className="epk-corner-mid hidden md:block">{labels[1]}</span>
       <span>{labels[2]}</span>
     </div>
   );
@@ -22,7 +22,7 @@ export default function EPK() {
   const e = t.epk;
 
   return (
-    <div className="bg-bg text-ink" style={{ fontFamily: "var(--font-mono), monospace" }}>
+    <div className="epk-sheet bg-bg text-ink" style={{ fontFamily: "var(--font-mono), monospace" }}>
       {/* ======== 01 · COVER ======== */}
       <section className="print-page relative h-svh overflow-hidden flex items-center justify-center">
         <Image
@@ -55,11 +55,11 @@ export default function EPK() {
       </section>
 
       {/* ======== 02 · ABOUT ======== */}
-      <section className="print-page relative min-h-svh overflow-hidden flex items-center py-28 px-7 md:px-12">
+      <section className="epk-about print-page relative min-h-svh overflow-hidden flex items-center py-28 px-7 md:px-12">
         <Corners labels={e.corners} />
-        <div className="grid md:grid-cols-2 gap-14 md:gap-20 items-center w-full max-w-6xl mx-auto">
+        <div className="epk-about-grid grid md:grid-cols-2 gap-14 md:gap-20 items-center w-full max-w-6xl mx-auto">
           <figure className="relative m-0">
-            <div className="relative aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-black">
+            <div className="epk-about-photo relative aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-black">
               <Image
                 src="/photos/photo-21.jpg"
                 alt="Maru Bravo, studio portrait"
@@ -73,7 +73,7 @@ export default function EPK() {
               {e.about.title}
             </h2>
           </figure>
-          <div className="flex flex-col gap-7 md:pl-6 md:max-w-[44ch]">
+          <div className="epk-about-copy flex flex-col gap-7 md:pl-6 md:max-w-[44ch]">
             {e.about.p.map((p) => (
               <p key={p.slice(0, 18)} className="font-editorial text-[clamp(17px,1.6vw,22px)] leading-[1.55] opacity-90">
                 {p}
@@ -116,7 +116,7 @@ export default function EPK() {
           </p>
           <p className="font-editorial text-[clamp(20px,2.4vw,32px)] leading-[1.45]">{e.rooms.p}</p>
         </div>
-        <div className="absolute bottom-7 inset-x-0 px-7 md:px-12 flex flex-col gap-1.5 text-[10px] tracking-[0.22em] uppercase opacity-60">
+        <div className="epk-rooms-strip absolute bottom-7 inset-x-0 px-7 md:px-12 flex flex-col gap-1.5 text-[10px] tracking-[0.22em] uppercase opacity-60">
           <span>{venues.join(" · ")}</span>
           <span className="opacity-70">{cities.join(" · ")}</span>
         </div>
@@ -158,12 +158,12 @@ export default function EPK() {
         />
         <div className="absolute inset-0 [background:linear-gradient(180deg,rgba(6,6,6,0.35),transparent_35%,rgba(6,6,6,0.9))]" />
         <Corners labels={e.corners} />
-        <div className="relative w-full px-7 md:px-12 pb-9 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div className="epk-close-row relative w-full px-7 md:px-12 pb-9 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
             <p className="font-display uppercase text-[clamp(40px,6vw,92px)] leading-[0.9]">Maru Bravo</p>
             <p className="mt-3 text-[10px] tracking-[0.28em] uppercase opacity-70">{e.cover.roles}</p>
           </div>
-          <div className="md:text-right text-[10.5px] tracking-[0.2em] uppercase">
+          <div className="epk-close-contact md:text-right text-[10.5px] tracking-[0.2em] uppercase">
             <p className="opacity-60 mb-1.5">{e.contactLabel}</p>
             <a href={`mailto:${site.bookingEmail}`} className="normal-case tracking-[0.04em] text-sm block hover:text-pop transition-colors">
               {site.bookingEmail}
