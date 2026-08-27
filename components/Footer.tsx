@@ -7,7 +7,7 @@ import { site } from "@/content/site";
 export default function Footer() {
   const { t } = useLang();
   const pathname = usePathname();
-  if (pathname === "/") return null; // home ends on the volt act
+  if (pathname === "/" || pathname === "/epk") return null; // home ends on the red room; the EPK is a self-contained sheet
   return (
     <footer className="border-t hairline px-5 md:px-10 py-10 mt-24">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">

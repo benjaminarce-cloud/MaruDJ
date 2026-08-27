@@ -77,9 +77,12 @@ body::after {
   font-family: var(--font-mono), monospace;
   letter-spacing: 0.06em;
 }
-/* magazine didone — the EPK issue */
+/* the one-sheet: warm 70s serif + geometric sans (Clearface/Futura energy) */
 .font-editorial {
-  font-family: var(--font-editorial), "Bodoni MT", Didot, serif;
+  font-family: var(--font-editorial), Georgia, serif;
+}
+.font-geo {
+  font-family: var(--font-geo), Futura, sans-serif;
 }
 
 /* ======== NEON GLOWS ======== */
