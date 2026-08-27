@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0a0a0a;
-  --surface: #141414;
-  --panel: #1c1c1c;
-  --ink: #e8e8e6;
-  --muted: #7d7d78;
-  --accent: #a3a39d;
-  --pop: #d4ff00;
-  --line: rgba(232, 232, 230, 0.14);
+  --bg: #0a0407;
+  --surface: #170a0f;
+  --ink: #fff5ec;
+  --muted: #a08a90;
+  --accent: #ffb44d; /* amber — golden hour */
+  --pop: #ff2440; /* pacha red */
+  --pink: #ff4fd8; /* neon pink */
+  --line: rgba(255, 245, 236, 0.16);
 }
 
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
-  --color-panel: var(--panel);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-pop: var(--pop);
+  --color-pink: var(--pink);
   --color-line: var(--line);
   --font-sans: var(--font-manrope);
 }
@@ -49,7 +49,7 @@ body::after {
   height: 200%;
   pointer-events: none;
   z-index: 90;
-  opacity: 0.06;
+  opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
   animation: grain 0.6s steps(4) infinite;
 }
@@ -63,42 +63,55 @@ body::after {
 
 ::selection {
   background: var(--pop);
-  color: var(--bg);
+  color: var(--ink);
 }
 
+/* groovy display — Pacha energy */
 .font-display {
-  font-family: var(--font-anton), Impact, sans-serif;
-  text-transform: uppercase;
+  font-family: var(--font-disp), Georgia, serif;
   letter-spacing: 0.01em;
 }
-.font-serif-it {
-  font-family: var(--font-fraunces), Georgia, serif;
-  font-style: italic;
+/* neon sign script */
+.font-script {
+  font-family: var(--font-script), cursive;
 }
 .mono {
   font-family: var(--font-mono), monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
 }
 
-/* hollow display type */
-.outline-ink {
-  -webkit-text-stroke: 1.5px var(--ink);
-  color: transparent;
+/* ======== NEON GLOWS ======== */
+.glow-red {
+  color: var(--ink);
+  text-shadow: 0 0 7px rgba(255, 36, 64, 0.95), 0 0 24px rgba(255, 36, 64, 0.75),
+    0 0 70px rgba(255, 36, 64, 0.55), 0 0 140px rgba(255, 36, 64, 0.4);
 }
-.outline-pop {
-  -webkit-text-stroke: 1.5px var(--pop);
-  color: transparent;
+.glow-pink {
+  color: var(--ink);
+  text-shadow: 0 0 7px rgba(255, 79, 216, 0.95), 0 0 24px rgba(255, 79, 216, 0.75),
+    0 0 70px rgba(255, 79, 216, 0.55), 0 0 140px rgba(255, 79, 216, 0.4);
 }
-.outline-muted {
-  -webkit-text-stroke: 1px var(--muted);
-  color: transparent;
+.glow-amber {
+  color: var(--ink);
+  text-shadow: 0 0 7px rgba(255, 180, 77, 0.95), 0 0 24px rgba(255, 180, 77, 0.7),
+    0 0 70px rgba(255, 180, 77, 0.5), 0 0 140px rgba(255, 180, 77, 0.35);
+}
+.glow-soft {
+  text-shadow: 0 0 30px rgba(255, 120, 60, 0.35), 0 2px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* neon tube frame (like a sign on the wall) */
+.neon-frame {
+  border: 2.5px solid var(--pink);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 12px rgba(255, 79, 216, 0.7), inset 0 0 12px rgba(255, 79, 216, 0.5),
+    0 0 60px rgba(255, 79, 216, 0.35);
 }
 
 .label {
-  font-family: var(--font-mono), monospace;
   font-size: 0.6875rem;
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -119,13 +132,22 @@ body::after {
   animation-direction: reverse;
 }
 
-/* strobe flicker — for tiny accents only */
+/* neon flicker — like a tube warming up */
 @keyframes flicker {
-  0%, 91%, 93%, 95%, 100% { opacity: 1; }
-  92%, 94% { opacity: 0.25; }
+  0%, 89%, 91%, 93%, 100% { opacity: 1; }
+  90%, 92% { opacity: 0.4; }
 }
 .flicker {
-  animation: flicker 3.2s linear infinite;
+  animation: flicker 3.4s linear infinite;
+}
+
+/* slow disco spin for halo rings */
+@keyframes haloPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+.halo-pulse {
+  animation: haloPulse 5s ease-in-out infinite;
 }
 
 /* reveal on scroll */
@@ -139,20 +161,41 @@ body::after {
   transform: none;
 }
 
-/* cinematic grade on media */
+/* warm cinematic grade */
 .photo {
-  filter: saturate(0.85) contrast(1.08);
+  filter: saturate(1.08) contrast(1.05);
 }
 
-/* monochrome until touched */
-.bw img,
-.bw video {
-  filter: grayscale(1) contrast(1.12);
-  transition: filter 0.5s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+/* red room wash — Pacha ceiling light */
+.wash-red {
+  position: relative;
 }
-.bw:hover img,
-.bw:hover video {
-  filter: grayscale(0) contrast(1.05);
+.wash-red::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 20%, rgba(255, 36, 64, 0.55), rgba(120, 4, 24, 0.75));
+  mix-blend-mode: color;
+  pointer-events: none;
+}
+.wash-red::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(190, 12, 40, 0.28);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* magenta laser wash */
+.wash-pink::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 80%, rgba(255, 79, 216, 0.4), rgba(60, 5, 60, 0.6));
+  mix-blend-mode: color;
+  pointer-events: none;
 }
 
 /* media hover */

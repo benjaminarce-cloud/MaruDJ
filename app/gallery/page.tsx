@@ -54,7 +54,7 @@ export default function Gallery() {
                 alt={p.alt}
                 fill
                 sizes="(min-width: 1024px) 17vw, (min-width: 640px) 25vw, 50vw"
-                className="object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:contrast-100 transition-[filter] duration-300"
+                className="object-cover photo group-hover:scale-105 transition-transform duration-500"
               />
               <span className="absolute inset-0 ring-inset ring-pop opacity-0 group-hover:opacity-100 group-hover:ring-2 transition-opacity" />
             </div>

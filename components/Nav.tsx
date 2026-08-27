@@ -39,9 +39,9 @@ export default function Nav() {
           <Link
             href="/"
             onClick={() => setOpen(false)}
-            className="font-display text-xl tracking-wide"
+            className="font-script text-xl"
           >
-            MB
+            Maru Bravo
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -79,8 +79,8 @@ export default function Nav() {
                 href={l.href}
                 onClick={() => setOpen(false)}
                 className={`font-display text-5xl leading-tight ${
-                  i % 2 ? "outline-ink hover:outline-pop" : "hover:text-pop"
-                } transition-colors`}
+                  i % 2 ? "glow-pink" : "glow-red"
+                }`}
               >
                 {t.nav[l.key]}
               </Link>

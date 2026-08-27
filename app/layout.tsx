@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
-import { Anton, IBM_Plex_Mono, Manrope } from "next/font/google";
+import { IBM_Plex_Mono, Manrope, Pacifico, Shrikhand } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/lib/i18n";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
-const anton = Anton({
-  variable: "--font-anton",
+const shrikhand = Shrikhand({
+  variable: "--font-disp",
   weight: "400",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
+});
+
+const pacifico = Pacifico({
+  variable: "--font-script",
+  weight: "400",
+  subsets: ["latin", "latin-ext"],
 });
 
 const manrope = Manrope({
@@ -49,7 +55,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${anton.variable} ${manrope.variable} ${plexMono.variable}`}
+      className={`${shrikhand.variable} ${pacifico.variable} ${manrope.variable} ${plexMono.variable}`}
     >
       <body className="min-h-screen flex flex-col">
         <LangProvider>
