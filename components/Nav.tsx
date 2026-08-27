@@ -11,6 +11,7 @@ const links = [
   { href: "/gallery", key: "gallery" },
   { href: "/video", key: "video" },
   { href: "/notes", key: "notes" },
+  { href: "/epk", key: "epk" },
   { href: "/booking", key: "booking" },
 ] as const;
 

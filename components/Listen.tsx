@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { useLang } from "@/lib/i18n";
 import { site } from "@/content/site";
 
@@ -12,9 +13,11 @@ const playerSrc =
 export default function Listen() {
   const { t } = useLang();
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  if (pathname === "/epk") return null; // the magazine stays print-pure
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
+    <div className="no-print fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
       {open ? (
         <div className="w-[min(92vw,440px)] rounded-2xl overflow-hidden border border-pop/60 bg-bg shadow-[0_0_40px_rgba(255,36,64,0.45)]">
           <div className="flex items-center justify-between px-4 py-2">

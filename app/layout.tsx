@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Manrope, Pacifico, Shrikhand } from "next/font/google";
+import { Bodoni_Moda, IBM_Plex_Mono, Manrope, Pacifico, Shrikhand } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/lib/i18n";
 import Nav from "@/components/Nav";
@@ -10,6 +10,12 @@ const shrikhand = Shrikhand({
   variable: "--font-disp",
   weight: "400",
   subsets: ["latin", "latin-ext"],
+});
+
+const bodoni = Bodoni_Moda({
+  variable: "--font-editorial",
+  subsets: ["latin", "latin-ext"],
+  style: ["normal", "italic"],
 });
 
 const pacifico = Pacifico({
@@ -56,7 +62,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${shrikhand.variable} ${pacifico.variable} ${manrope.variable} ${plexMono.variable}`}
+      className={`${shrikhand.variable} ${pacifico.variable} ${bodoni.variable} ${manrope.variable} ${plexMono.variable}`}
     >
       <body className="min-h-screen flex flex-col">
         <LangProvider>

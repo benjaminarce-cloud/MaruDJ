@@ -128,6 +128,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ======== VENUES TICKER — right under the hero ======== */}
+      <section className="py-10 md:py-14 border-b hairline overflow-hidden">
+        <Ticker
+          items={venues}
+          duration="34s"
+          separator="✦"
+          itemClassName="font-display text-5xl md:text-8xl leading-tight glow-red [&>span:nth-child(2)]:text-pop"
+        />
+        <Ticker
+          items={cities}
+          reverse
+          duration="40s"
+          separator="✦"
+          className="mt-2 md:mt-4"
+          itemClassName="font-display text-5xl md:text-8xl leading-tight text-ink/90 [&>span:nth-child(2)]:text-pop"
+        />
+      </section>
+
       {/* ======== SCENE 02 — PEAK TIME: THE WALL ======== */}
       <section data-act className="snap-start relative bg-bg py-16 md:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,36,64,0.1),transparent_55%)]" />
@@ -185,25 +203,11 @@ export default function Home() {
       </section>
 
       {/* ======== SCENE 03 — THE FLOOR: venues + numbers + set ======== */}
-      <section data-act className="snap-start relative min-h-[70svh] flex flex-col justify-center bg-bg py-20 overflow-hidden border-y hairline">
+      <section data-act className="snap-start relative bg-bg py-16 md:py-20 overflow-hidden border-y hairline">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,rgba(255,36,64,0.09),transparent_55%)]" />
         <div className="relative">
-          <p className="label px-4 md:px-8 mb-8">{scenes[2].tag} — 04:30 · {t.home.venuesLabel}</p>
-          <Ticker
-            items={venues}
-            duration="34s"
-            separator="✦"
-            itemClassName="font-display text-5xl md:text-8xl leading-tight glow-red [&>span:nth-child(2)]:text-pop"
-          />
-          <Ticker
-            items={cities}
-            reverse
-            duration="40s"
-            separator="✦"
-            className="mt-2 md:mt-4"
-            itemClassName="font-display text-5xl md:text-8xl leading-tight text-ink/90 [&>span:nth-child(2)]:text-pop"
-          />
-          <div className="px-4 md:px-8 mt-14 flex flex-col md:flex-row md:items-end justify-between gap-10">
+          <p className="label px-4 md:px-8 mb-10">{scenes[2].tag} — 04:30</p>
+          <div className="px-4 md:px-8 flex flex-col md:flex-row md:items-end justify-between gap-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
               {t.home.stats.map((s) => (
                 <div key={s.t}>

@@ -77,6 +77,10 @@ body::after {
   font-family: var(--font-mono), monospace;
   letter-spacing: 0.06em;
 }
+/* magazine didone — the EPK issue */
+.font-editorial {
+  font-family: var(--font-editorial), "Bodoni MT", Didot, serif;
+}
 
 /* ======== NEON GLOWS ======== */
 .glow-red {
@@ -188,3 +192,15 @@ body::after {
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
+
+/* ======== PRINT (EPK → PDF) ======== */
+@media print {
+  body::after { display: none; }
+  header, .no-print { display: none !important; }
+  body { background: #f3ecdd; }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .print-page { break-after: page; }
+}
