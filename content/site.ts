@@ -46,11 +46,11 @@ export type Clip = {
 };
 
 export const clips: Clip[] = [
-  { src: "/video/clip-beach.mp4", poster: "/video/clip-beach-poster.jpg", tag: { en: "Sandbar Beach House — day", es: "Sandbar Beach House — día" }, portrait: true },
-  { src: "/video/clip-golden.mp4", poster: "/video/clip-golden-poster.jpg", tag: { en: "Rooftop — golden hour", es: "Rooftop — golden hour" }, portrait: true },
-  { src: "/video/clip-club.mp4", poster: "/video/clip-club-poster.jpg", tag: { en: "La Victoria — night", es: "La Victoria — noche" }, portrait: true },
+  { src: "/video/clip-beach.mp4", poster: "/video/clip-beach-poster.jpg", tag: { en: "Sandbar Beach House, day", es: "Sandbar Beach House, día" }, portrait: true },
+  { src: "/video/clip-golden.mp4", poster: "/video/clip-golden-poster.jpg", tag: { en: "Rooftop, golden hour", es: "Rooftop, golden hour" }, portrait: true },
+  { src: "/video/clip-club.mp4", poster: "/video/clip-club-poster.jpg", tag: { en: "La Victoria, night", es: "La Victoria, noche" }, portrait: true },
   { src: "/video/clip-sandbar.mp4", poster: "/video/clip-sandbar-poster.jpg", tag: { en: "By the sea", es: "Frente al mar" }, portrait: true },
-  { src: "/video/clip-pool.mp4", poster: "/video/clip-pool-poster.jpg", tag: { en: "Rooftop pool — dusk", es: "Rooftop pool — atardecer" }, portrait: true },
+  { src: "/video/clip-pool.mp4", poster: "/video/clip-pool-poster.jpg", tag: { en: "Rooftop pool, dusk", es: "Rooftop pool, atardecer" }, portrait: true },
   { src: "/video/clip-red.mp4", poster: "/video/clip-red-poster.jpg", tag: { en: "Peak time", es: "Peak time" }, portrait: true },
   { src: "/video/clip-crowd.mp4", poster: "/video/clip-crowd-poster.jpg", tag: { en: "On the floor", es: "En la pista" }, portrait: true },
 ];
@@ -63,7 +63,7 @@ export type EventItem = {
   tickets?: string;
 };
 
-// Add upcoming dates here — they render automatically on /agenda.
+// Add upcoming dates here. They render automatically on /agenda.
 export const events: EventItem[] = [];
 
 export type Photo = {
@@ -77,7 +77,7 @@ export type Photo = {
 export const gallery: Photo[] = [
   { src: "/photos/photo-26.jpg", alt: "Golden hour rooftop set in a hat", w: 1350, h: 1800 },
   { src: "/photos/photo-01.jpg", alt: "Maru Bravo laughing at the decks under fairy lights", w: 2000, h: 3000 },
-  { src: "/photos/photo-28.jpg", alt: "Sandbar Beach House — playing by the sea", w: 1350, h: 1800 },
+  { src: "/photos/photo-28.jpg", alt: "Sandbar Beach House, playing by the sea", w: 1350, h: 1800 },
   { src: "/photos/photo-22.jpg", alt: "Golden light at the decks in a cowboy hat", w: 1012, h: 1800 },
   { src: "/photos/photo-30.jpg", alt: "Sunlit portrait under the palms", w: 1202, h: 1800 },
   { src: "/photos/photo-03.jpg", alt: "Maru Bravo at the decks under a wooden arched ceiling", w: 1200, h: 1800 },

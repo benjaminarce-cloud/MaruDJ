@@ -80,7 +80,7 @@ export default function Home() {
 
   return (
     <div className="bg-bg" style={{ fontFamily: "var(--font-mono), monospace" }}>
-      {/* fixed side rail — home / epk / bookings */}
+      {/* fixed side rail: home / epk / bookings */}
       <div className="fixed top-0 left-0 bottom-0 w-12 md:w-[66px] z-[60] border-r hairline flex flex-col items-center justify-center gap-12 bg-bg">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -165,7 +165,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ======== RAILS — rooms & cities ======== */}
+        {/* ======== RAILS: rooms & cities ======== */}
         <section id="rails" className="pt-12 pb-12 border-t hairline">
           <Ticker
             items={venues}

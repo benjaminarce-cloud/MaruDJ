@@ -16,7 +16,7 @@ export const copy = {
         tagline: "An experience beyond music",
         role: "Open format DJ",
       },
-      running: "Maru Bravo — press kit",
+      running: "Maru Bravo · press kit",
       contents: {
         quote: "The booking is not a DJ slot. It is the shape of your whole night.",
         items: [
@@ -29,8 +29,8 @@ export const copy = {
         ],
       },
       who: {
-        head: "01 — Who she is",
-        lead: "DJ from San Miguel de Tucumán, based in Ibiza. Open format — urban, latin house, house.",
+        head: "01 · Who she is",
+        lead: "DJ from San Miguel de Tucumán, based in Ibiza. Open format: urban, latin house, house.",
         body: "She learned the floor from the other side of the booth: warm-ups that take their time, peak times built like an argument, and a read of the room that does not depend on the tracklist.",
         quote: "“I don't want the night to be loud. I want it to be inevitable.”",
         facts: [
@@ -41,15 +41,15 @@ export const copy = {
           ["Rider", "On request"],
         ],
       },
-      plateA: { quote: "The whole room turns the same direction.", caption: "Rooftop — Playa del Carmen" },
+      plateA: { quote: "The whole room turns the same direction.", caption: "Rooftop, Playa del Carmen" },
       sound: {
-        head: "02 — The sound",
+        head: "02 · The sound",
         title: ["Open", "format"],
         genres: ["Urban", "Latin house", "House"],
-        body: "Own edits and unreleased tracks. Not a genre to defend — a mood to hold, for as long as the room is hers.",
+        body: "Own edits and unreleased tracks. Not a genre to defend, but a mood to hold, for as long as the room is hers.",
       },
       rooms: {
-        head: "03 — Rooms & cities",
+        head: "03 · Rooms & cities",
         venues: [
           ["Ushuaïa", "The Unexpected · peak"],
           ["Lío", "Dinner → floor"],
@@ -64,23 +64,23 @@ export const copy = {
         cities: "Ibiza · Barcelona · Madrid · Alicante · Buenos Aires · Córdoba · Tucumán · Tulum · Playa del Carmen · Cancún · Monaco",
       },
       numbers: {
-        head: "04 — In numbers",
+        head: "04 · In numbers",
         stats: [
           ["6+", "Years behind the decks"],
           ["60", "Nights a year"],
           ["11", "Cities"],
           ["4", "Countries"],
         ],
-        line: "Ushuaïa · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes — and the rooftops and beach houses of the Riviera Maya.",
+        line: "Ushuaïa · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes, and the rooftops and beach houses of the Riviera Maya.",
       },
       plateB: { title: ["Feel-good music", "for dark rooms"], left: "Peak time", right: "Ibiza" },
       selects: {
-        head: "05 — Selects",
+        head: "05 · Selects",
         captions: "Rooftop above the sea · Walking in · Street portrait",
-        gallery: "Full gallery — marubravo.com",
+        gallery: "Full gallery · marubravo.com",
       },
       booking: {
-        head: "06 — Booking & logistics",
+        head: "06 · Booking & logistics",
         lead: "Clubs, festivals, premium and private events, worldwide. Answers within 48 hours.",
         facts: [
           ["Sound", "Open format"],
@@ -92,7 +92,7 @@ export const copy = {
         ],
         site: "Site",
       },
-      foot: { left: "Maru Bravo — press kit", right: "Ibiza · worldwide" },
+      foot: { left: "Maru Bravo · press kit", right: "Ibiza · worldwide" },
       print: "Print / Save as PDF",
     },
     hero: {
@@ -126,20 +126,20 @@ export const copy = {
         qa: [
           {
             q: "On the first hour",
-            a: "Everyone wants the drop. The first hour is where you earn it — you're deciding what kind of room it's going to be. I play slower than people expect and I never apologise for it.",
+            a: "Everyone wants the drop. The first hour is where you earn it: you're deciding what kind of room it's going to be. I play slower than people expect and I never apologise for it.",
           },
           {
             q: "On coming from Tucumán",
-            a: "Nobody there is waiting for a DJ from Argentina. You learn to be undeniable before you're known. That's still how I read a booking — the room owes me nothing.",
+            a: "Nobody there is waiting for a DJ from Argentina. You learn to be undeniable before you're known. That's still how I read a booking: the room owes me nothing.",
           },
           {
             q: "On open format",
-            a: "Urban, latin house, house — I'm not defending a genre, I'm holding a mood. The edits are mine so the transitions can be things nobody has heard.",
+            a: "Urban, latin house, house: I'm not defending a genre, I'm holding a mood. The edits are mine so the transitions can be things nobody has heard.",
           },
         ],
         more: "Full interview in the press kit →",
         facts: [
-          ["Sound", "Urban · Latin House · House — open format"],
+          ["Sound", "Open format · Urban · Latin House · House"],
           ["Base", "Ibiza · worldwide"],
           ["Adjacent to", "Peggy Gou · CamelPhat · Michael Bibi · Maceo Plex"],
           ["Rider", "Technical rider on request"],
@@ -149,7 +149,7 @@ export const copy = {
         title: "Recorded nights",
         play: "Play",
         tracks: [
-          { t: "Live set — full session", d: "1h 58m" },
+          { t: "Live set, full session", d: "1h 58m" },
           { t: "Rooftop, golden hour", d: "62m" },
           { t: "Peak time, dark room", d: "48m" },
         ],
@@ -170,7 +170,7 @@ export const copy = {
           date: "Date / slot",
           msg: "What the night is",
           send: "Send request",
-          sent: "Sent — thank you",
+          sent: "Sent. Thank you",
         },
       },
     },
@@ -198,7 +198,7 @@ export const copy = {
     },
     notes: {
       title: "Notes",
-      empty: "Notes from the booth — stories, music and moments. Coming soon.",
+      empty: "Notes from the booth: stories, music and moments. Coming soon.",
       newsletterLabel: "The list",
       newsletter: "Be the first to know about new dates and music.",
       subscribe: "Join the list",
@@ -223,7 +223,7 @@ export const copy = {
         tagline: "Una experiencia más allá de la música",
         role: "DJ open format",
       },
-      running: "Maru Bravo — press kit",
+      running: "Maru Bravo · press kit",
       contents: {
         quote: "El booking no es un slot de DJ. Es la forma de toda tu noche.",
         items: [
@@ -236,8 +236,8 @@ export const copy = {
         ],
       },
       who: {
-        head: "01 — Quién es",
-        lead: "DJ de San Miguel de Tucumán, radicada en Ibiza. Open format — urban, latin house, house.",
+        head: "01 · Quién es",
+        lead: "DJ de San Miguel de Tucumán, radicada en Ibiza. Open format: urban, latin house, house.",
         body: "Aprendió la pista desde el otro lado de la cabina: warm-ups que se toman su tiempo, peak times construidos como un argumento, y una lectura de la sala que no depende del tracklist.",
         quote: "“No quiero que la noche sea fuerte. Quiero que sea inevitable.”",
         facts: [
@@ -248,15 +248,15 @@ export const copy = {
           ["Rider", "Bajo petición"],
         ],
       },
-      plateA: { quote: "La sala entera gira en la misma dirección.", caption: "Rooftop — Playa del Carmen" },
+      plateA: { quote: "La sala entera gira en la misma dirección.", caption: "Rooftop, Playa del Carmen" },
       sound: {
-        head: "02 — El sonido",
+        head: "02 · El sonido",
         title: ["Open", "format"],
         genres: ["Urban", "Latin house", "House"],
-        body: "Edits propios y tracks unreleased. No es un género que defender — es un clima que sostener, mientras la sala sea suya.",
+        body: "Edits propios y tracks unreleased. No es un género que defender, sino un clima que sostener, mientras la sala sea suya.",
       },
       rooms: {
-        head: "03 — Salas y ciudades",
+        head: "03 · Salas y ciudades",
         venues: [
           ["Ushuaïa", "The Unexpected · peak"],
           ["Lío", "Cena → pista"],
@@ -271,23 +271,23 @@ export const copy = {
         cities: "Ibiza · Barcelona · Madrid · Alicante · Buenos Aires · Córdoba · Tucumán · Tulum · Playa del Carmen · Cancún · Mónaco",
       },
       numbers: {
-        head: "04 — En números",
+        head: "04 · En números",
         stats: [
           ["6+", "Años en cabina"],
           ["60", "Noches al año"],
           ["11", "Ciudades"],
           ["4", "Países"],
         ],
-        line: "Ushuaïa · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes — y los rooftops y beach houses de la Riviera Maya.",
+        line: "Ushuaïa · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes, y los rooftops y beach houses de la Riviera Maya.",
       },
       plateB: { title: ["Música para sentirse bien", "en cuartos oscuros"], left: "Peak time", right: "Ibiza" },
       selects: {
-        head: "05 — Selección",
+        head: "05 · Selección",
         captions: "Rooftop sobre el mar · Entrando · Retrato en la calle",
-        gallery: "Galería completa — marubravo.com",
+        gallery: "Galería completa · marubravo.com",
       },
       booking: {
-        head: "06 — Booking y logística",
+        head: "06 · Booking y logística",
         lead: "Clubs, festivales, eventos premium y privados, worldwide. Respuesta en 48 horas.",
         facts: [
           ["Sonido", "Open format"],
@@ -299,7 +299,7 @@ export const copy = {
         ],
         site: "Sitio",
       },
-      foot: { left: "Maru Bravo — press kit", right: "Ibiza · worldwide" },
+      foot: { left: "Maru Bravo · press kit", right: "Ibiza · worldwide" },
       print: "Imprimir / Guardar PDF",
     },
     hero: {
@@ -341,12 +341,12 @@ export const copy = {
           },
           {
             q: "Sobre el open format",
-            a: "Urban, latin house, house — no defiendo un género, sostengo un clima. Los edits son míos para que las transiciones sean cosas que nadie escuchó.",
+            a: "Urban, latin house, house: no defiendo un género, sostengo un clima. Los edits son míos para que las transiciones sean cosas que nadie escuchó.",
           },
         ],
         more: "Entrevista completa en el press kit →",
         facts: [
-          ["Sonido", "Urban · Latin House · House — open format"],
+          ["Sonido", "Open format · Urban · Latin House · House"],
           ["Base", "Ibiza · worldwide"],
           ["Cercana a", "Peggy Gou · CamelPhat · Michael Bibi · Maceo Plex"],
           ["Rider", "Rider técnico bajo petición"],
@@ -356,7 +356,7 @@ export const copy = {
         title: "Noches grabadas",
         play: "Play",
         tracks: [
-          { t: "Set en vivo — sesión completa", d: "1h 58m" },
+          { t: "Set en vivo, sesión completa", d: "1h 58m" },
           { t: "Rooftop, golden hour", d: "62m" },
           { t: "Peak time, cuarto oscuro", d: "48m" },
         ],
@@ -377,7 +377,7 @@ export const copy = {
           date: "Fecha / horario",
           msg: "Qué es la noche",
           send: "Enviar solicitud",
-          sent: "Enviado — gracias",
+          sent: "Enviado. Gracias",
         },
       },
     },
@@ -405,7 +405,7 @@ export const copy = {
     },
     notes: {
       title: "Notas",
-      empty: "Notas desde la cabina — historias, música y momentos. Muy pronto.",
+      empty: "Notas desde la cabina: historias, música y momentos. Muy pronto.",
       newsletterLabel: "La lista",
       newsletter: "Enterate primero de nuevas fechas y música.",
       subscribe: "Unirme a la lista",

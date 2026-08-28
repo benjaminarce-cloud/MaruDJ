@@ -38,13 +38,13 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://marubravo.com"),
   title: {
-    default: "Maru Bravo — DJ",
-    template: "%s — Maru Bravo",
+    default: "Maru Bravo · DJ",
+    template: "%s · Maru Bravo",
   },
   description:
-    "An experience beyond music. Urban & Latin House DJ based in Ibiza — sets of international essence for clubs, festivals and premium events.",
+    "An experience beyond music. Urban & Latin House DJ based in Ibiza. Sets of international essence for clubs, festivals and premium events.",
   openGraph: {
-    title: "Maru Bravo — DJ",
+    title: "Maru Bravo · DJ",
     description:
       "An experience beyond music. Urban & Latin House DJ based in Ibiza.",
     url: "https://marubravo.com",

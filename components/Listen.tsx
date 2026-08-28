@@ -49,7 +49,7 @@ export default function Listen() {
       ) : (
         <button
           onClick={() => setOpen(true)}
-          aria-label={`${t.hero.listen} — SoundCloud`}
+          aria-label={`${t.hero.listen} · SoundCloud`}
           className="group flex items-center gap-2.5 border hairline bg-bg/85 backdrop-blur-sm px-3.5 py-2.5 text-ink/75 hover:text-pop hover:border-pop/60 cursor-pointer transition-colors"
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden>

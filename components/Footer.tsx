@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
         <div>
           <p className="font-display text-3xl mb-2">Maru Bravo</p>
-          <p className="label">38.98° N — 1.43° E · Ibiza · Worldwide</p>
+          <p className="label">38.98° N · 1.43° E · Ibiza · Worldwide</p>
         </div>
         <Socials className="text-ink/85" />
         <div className="md:text-right">

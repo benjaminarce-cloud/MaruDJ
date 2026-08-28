@@ -13,7 +13,7 @@ const AMBER_DEEP = "#B87515";
 
 /* A letter page is 8.5in = 612pt wide. Every size below is expressed against the
    page's own width (container query units), so a page renders identically at any
-   screen size and at exactly 8.5x11in in print — no breakpoints involved. */
+   screen size and at exactly 8.5x11in in print, with no breakpoints involved. */
 const pt = (n: number) => `${((n * 100) / 612).toFixed(4)}cqw`;
 const inch = (n: number) => `${((n * 100) / 8.5).toFixed(4)}cqw`;
 const bw = (contrast: number, brightness = 1) =>
@@ -225,9 +225,11 @@ export default function EPK() {
       </Page>
 
       {/* ============ 06 · ROOMS & CITIES ============ */}
-      <Page style={{ boxSizing: "border-box", padding: inch(0.62), display: "flex", flexDirection: "column" }}>
-        <RunningHead label={e.rooms.head} page="06" />
-        <div style={{ marginTop: pt(20), display: "flex", flexDirection: "column" }}>
+      <Page style={{ boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
+        <div style={{ margin: `${inch(0.62)} ${inch(0.62)} 0` }}>
+          <RunningHead label={e.rooms.head} page="06" />
+        </div>
+        <div style={{ boxSizing: "border-box", padding: `${pt(20)} ${inch(0.62)} ${pt(18)}`, display: "flex", flexDirection: "column" }}>
           {e.rooms.venues.map(([name, role], i) => (
             <div
               key={name}
@@ -245,14 +247,12 @@ export default function EPK() {
               <span style={{ fontSize: pt(7.5), letterSpacing: "0.2em", textTransform: "uppercase", opacity: 0.55 }}>{role}</span>
             </div>
           ))}
-        </div>
-        <div style={{ marginTop: "auto", display: "grid", gridTemplateColumns: "0.8fr 1fr", gap: pt(20), alignItems: "end" }}>
-          <Frame src="/photos/photo-28.jpg" alt="Playing by the sea" filter={bw(1.12)} style={{ height: inch(1.85) }} />
-          <div>
+          <div style={{ marginTop: pt(18), display: "grid", gridTemplateColumns: `${inch(0.9)} 1fr`, gap: pt(16), alignItems: "baseline", borderTop: `1px solid ${INK}`, paddingTop: pt(8) }}>
             <p style={{ margin: 0, fontSize: pt(7.5), letterSpacing: "0.24em", textTransform: "uppercase", opacity: 0.5 }}>{e.rooms.citiesLabel}</p>
-            <p style={{ margin: `${pt(7)} 0 0`, fontFamily: SERIF, fontSize: pt(15), lineHeight: 1.35 }}>{e.rooms.cities}</p>
+            <p style={{ margin: 0, fontFamily: SERIF, fontSize: pt(15), lineHeight: 1.35 }}>{e.rooms.cities}</p>
           </div>
         </div>
+        <Frame src="/photos/photo-28.jpg" alt="Playing by the sea" filter={bw(1.12)} position="50% 45%" style={{ flex: 1, minHeight: 0 }} />
       </Page>
 
       {/* ============ 07 · IN NUMBERS ============ */}

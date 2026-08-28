@@ -58,7 +58,7 @@ export default function Gallery() {
           <span>
             {gallery.length} {t.home.archive.count} · {clips.length} {t.gallery.clips}
           </span>
-          <span>Maru Bravo — {t.gallery.title}</span>
+          <span>Maru Bravo · {t.gallery.title}</span>
         </div>
         <h1 className="font-display uppercase text-[clamp(48px,9vw,140px)] leading-[0.9] mt-6 mb-8">
           {t.gallery.title}

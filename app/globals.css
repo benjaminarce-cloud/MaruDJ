@@ -64,13 +64,13 @@ body::after {
   color: var(--bg);
 }
 
-/* amber focus ring — the browser default blue fights the palette */
+/* amber focus ring: the browser default blue fights the palette */
 :focus-visible {
   outline: 2px solid var(--pop);
   outline-offset: 2px;
 }
 
-/* poster display — Anton */
+/* poster display: Anton */
 .font-display {
   font-family: var(--font-disp), sans-serif;
   letter-spacing: -0.005em;
@@ -79,7 +79,7 @@ body::after {
   font-family: var(--font-mono), monospace;
   letter-spacing: 0.06em;
 }
-/* editorial serif — EB Garamond */
+/* editorial serif: EB Garamond */
 .font-editorial {
   font-family: var(--font-editorial), Georgia, serif;
 }
@@ -129,7 +129,7 @@ body::after {
   animation-direction: reverse;
 }
 
-/* neon flicker — like a tube warming up */
+/* neon flicker, like a tube warming up */
 @keyframes flicker {
   0%, 89%, 91%, 93%, 100% { opacity: 1; }
   90%, 92% { opacity: 0.4; }
@@ -208,7 +208,7 @@ body::after {
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
 
-/* ======== PRESS KIT — letter pages ========
+/* ======== PRESS KIT: letter pages ========
    Each page is a container; every size inside is expressed in container query
    units against the page width, so screen and print are the same document. */
 .epk-sheet {
