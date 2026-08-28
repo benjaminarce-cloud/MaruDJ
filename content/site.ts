@@ -76,7 +76,7 @@ export type Photo = {
 // Ordered for rhythm: day → dusk → night → studio
 export const gallery: Photo[] = [
   { src: "/photos/photo-26.jpg", alt: "Golden hour rooftop set in a hat", w: 1350, h: 1800 },
-  { src: "/photos/photo-01.jpg", alt: "Maru Bravo laughing at the decks under fairy lights", w: 1200, h: 1800 },
+  { src: "/photos/photo-01.jpg", alt: "Maru Bravo laughing at the decks under fairy lights", w: 2000, h: 3000 },
   { src: "/photos/photo-28.jpg", alt: "Sandbar Beach House — playing by the sea", w: 1350, h: 1800 },
   { src: "/photos/photo-22.jpg", alt: "Golden light at the decks in a cowboy hat", w: 1012, h: 1800 },
   { src: "/photos/photo-30.jpg", alt: "Sunlit portrait under the palms", w: 1202, h: 1800 },
