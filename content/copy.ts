@@ -5,7 +5,6 @@ export const copy = {
     nav: {
       agenda: "Agenda",
       gallery: "Gallery",
-      video: "Video",
       notes: "Notes",
       booking: "Booking",
       epk: "EPK",
@@ -55,12 +54,6 @@ export const copy = {
         ctaListen: "Hear a set",
         coords: "38.98°N 1.43°E",
         season: "Summer 26",
-      },
-      rails: {
-        label: "Rooms & cities",
-        note: "Ushuaïa — The Unexpected",
-        statLeft: "Six years · sixty nights a year · four countries",
-        statRight: "Open format · Ibiza based",
       },
       quote: {
         text: "Nobody remembers the tracklist. Everybody remembers the feeling.",
@@ -133,12 +126,7 @@ export const copy = {
     },
     gallery: {
       title: "Gallery",
-    },
-    video: {
-      title: "Video",
-      channel: "YouTube channel",
-      loopsTitle: "Moments",
-      setsTitle: "Full sets",
+      clips: "clips",
     },
     booking: {
       title: "Booking",
@@ -167,7 +155,6 @@ export const copy = {
     nav: {
       agenda: "Agenda",
       gallery: "Galería",
-      video: "Video",
       notes: "Notas",
       booking: "Booking",
       epk: "EPK",
@@ -217,12 +204,6 @@ export const copy = {
         ctaListen: "Escuchar un set",
         coords: "38.98°N 1.43°E",
         season: "Verano 26",
-      },
-      rails: {
-        label: "Salas y ciudades",
-        note: "Ushuaïa — The Unexpected",
-        statLeft: "Seis años · sesenta noches al año · cuatro países",
-        statRight: "Open format · base en Ibiza",
       },
       quote: {
         text: "Nadie recuerda el tracklist. Todos recuerdan la sensación.",
@@ -295,12 +276,7 @@ export const copy = {
     },
     gallery: {
       title: "Galería",
-    },
-    video: {
-      title: "Video",
-      channel: "Canal de YouTube",
-      loopsTitle: "Momentos",
-      setsTitle: "Sets completos",
+      clips: "clips",
     },
     booking: {
       title: "Booking",

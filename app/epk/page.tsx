@@ -86,8 +86,8 @@ export default function EPK() {
       {/* ======== 03 · STATEMENT ======== */}
       <section className="print-page relative h-svh overflow-hidden flex items-center">
         <Image
-          src="/photos/photo-06.jpg"
-          alt="Movement during a set"
+          src="/photos/photo-04.jpg"
+          alt="Head down, working the mixer"
           fill
           sizes="100vw"
           className="object-cover"
@@ -102,8 +102,8 @@ export default function EPK() {
       {/* ======== 04 · ROOMS ======== */}
       <section className="print-page relative h-svh overflow-hidden flex items-center">
         <Image
-          src="/photos/photo-29.jpg"
-          alt="Club set under lasers"
+          src="/photos/photo-07.jpg"
+          alt="The room — arched ceiling above the booth"
           fill
           sizes="100vw"
           className="object-cover"
@@ -125,12 +125,12 @@ export default function EPK() {
       {/* ======== 05 · TECHNICAL RIDER ======== */}
       <section className="print-page relative h-svh overflow-hidden flex items-center justify-center">
         <Image
-          src="/photos/photo-24.jpg"
-          alt="Red neon booth, Pioneer decks"
+          src="/photos/photo-11.jpg"
+          alt="Hands on the Pioneer decks"
           fill
           sizes="100vw"
-          className="object-cover"
-          style={{ filter: BW(1.25, 0.35) }}
+          className="object-cover object-[50%_78%]"
+          style={{ filter: BW(1.25, 0.4) }}
         />
         <Corners labels={e.corners} />
         <div className="relative text-center px-6">
@@ -149,12 +149,12 @@ export default function EPK() {
       {/* ======== 06 · CLOSING / CONTACT ======== */}
       <section className="print-page relative h-svh overflow-hidden flex items-end">
         <Image
-          src="/photos/photo-25.jpg"
-          alt="Night out at Roto"
+          src="/photos/photo-33.jpg"
+          alt="Maru Bravo at the decks, end of the night"
           fill
           sizes="100vw"
-          className="object-cover object-[50%_25%]"
-          style={{ filter: BW(1.1, 0.75) }}
+          className="object-cover object-[50%_18%]"
+          style={{ filter: BW(1.08, 0.8) }}
         />
         <div className="absolute inset-0 [background:linear-gradient(180deg,rgba(6,6,6,0.35),transparent_35%,rgba(6,6,6,0.9))]" />
         <Corners labels={e.corners} />

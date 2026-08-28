@@ -7,7 +7,6 @@ import { useLang } from "@/lib/i18n";
 
 const links = [
   { href: "/gallery", key: "gallery" },
-  { href: "/video", key: "video" },
   { href: "/epk", key: "epk" },
   { href: "/booking", key: "booking" },
 ] as const;

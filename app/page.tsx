@@ -166,12 +166,7 @@ export default function Home() {
         </section>
 
         {/* ======== RAILS — rooms & cities ======== */}
-        <section id="rails" className="pt-12 pb-[52px] border-t hairline">
-          <div className="flex justify-between gap-5 px-5 md:px-[26px] pb-[22px] text-[10.5px] tracking-[0.24em] uppercase opacity-60">
-            <span>{h.rails.label}</span>
-            <span>{h.rails.note}</span>
-          </div>
-
+        <section id="rails" className="pt-12 pb-12 border-t hairline">
           <Ticker
             items={venues}
             duration="40s"
@@ -187,11 +182,6 @@ export default function Home() {
             className="border-b hairline py-3.5"
             itemClassName="font-editorial italic text-[clamp(20px,3vw,46px)] [&>span:nth-child(2)]:opacity-40"
           />
-
-          <div className="flex justify-between gap-5 px-5 md:px-[26px] pt-5 text-[10.5px] tracking-[0.2em] uppercase opacity-50">
-            <span>{h.rails.statLeft}</span>
-            <span className="text-right">{h.rails.statRight}</span>
-          </div>
         </section>
 
         {/* ======== STATEMENT ======== */}
