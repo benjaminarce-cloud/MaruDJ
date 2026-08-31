@@ -25,6 +25,55 @@ const DISPLAY = "var(--font-disp), sans-serif";
 
 const rule = (dark: boolean) => (dark ? "rgba(239,236,228,0.3)" : INK);
 
+/* The contact block used to be four hairline rows at the foot of the last page
+   and read as fine print. Platform marks give it something to catch the eye. */
+const GLYPH: Record<string, ReactNode> = {
+  site: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18" />
+      <path d="M12 3c2.6 2.6 2.6 15.4 0 18-2.6-2.6-2.6-15.4 0-18Z" />
+    </>
+  ),
+  instagram: (
+    <>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4.1" />
+      <path d="M17.3 6.8h.01" />
+    </>
+  ),
+  soundcloud: (
+    <>
+      <path d="M3 14.6V12M6.1 16.4v-5.6M9.2 16.4V8.6M12.3 16.4V10" />
+      <path d="M15.4 16.4V7.6a4.4 4.4 0 0 1 4 4.5h.2a2.2 2.2 0 0 1 0 4.3h-4.2Z" />
+    </>
+  ),
+  youtube: (
+    <>
+      <rect x="2.6" y="5.6" width="18.8" height="12.8" rx="4" />
+      <path d="M10.3 9.7 15.7 12l-5.4 2.3V9.7Z" />
+    </>
+  ),
+};
+
+function Mark({ name }: { name: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width={pt(15)}
+      height={pt(15)}
+      fill="none"
+      stroke={AMBER}
+      strokeWidth={1.7}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      {GLYPH[name]}
+    </svg>
+  );
+}
+
 function Page({
   dark = false,
   style,
@@ -307,22 +356,40 @@ export default function EPK() {
             </div>
           ))}
         </div>
-        <div style={{ marginTop: "auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: `${pt(10)} ${pt(26)}`, fontSize: pt(8), letterSpacing: "0.14em", textTransform: "uppercase" }}>
-          {[
-            [e.booking.site, "marubravo.com", site.domain],
-            ["Instagram", "@marubravo__", site.socials.instagram],
-            ["SoundCloud", "mariana-bravo-010", site.socials.soundcloud],
-            ["YouTube", "@marubravo_dj", site.socials.youtube],
-          ].map(([k, v, href]) => (
-            <div key={k} style={{ display: "flex", justifyContent: "space-between", gap: pt(10), borderTop: "1px solid rgba(239,236,228,0.3)", paddingTop: pt(6) }}>
-              <span style={{ opacity: 0.5 }}>{k}</span>
-              <a href={href} target="_blank" rel="noreferrer" style={{ textTransform: "none", letterSpacing: "0.02em" }}>
-                {v}
+        <div style={{ marginTop: pt(26) }}>
+          <p style={{ margin: `0 0 ${pt(9)}`, fontSize: pt(7.5), letterSpacing: "0.24em", textTransform: "uppercase", color: AMBER }}>
+            {e.booking.follow}
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: pt(9) }}>
+            {[
+              ["site", e.booking.site, "marubravo.com", site.domain],
+              ["instagram", "Instagram", "@marubravo__", site.socials.instagram],
+              ["soundcloud", "SoundCloud", "mariana-bravo-010", site.socials.soundcloud],
+              ["youtube", "YouTube", "@marubravo_dj", site.socials.youtube],
+            ].map(([glyph, k, v, href]) => (
+              <a
+                key={k}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: pt(7),
+                  border: `1px solid ${AMBER}`,
+                  background: "rgba(232,163,61,0.1)",
+                  padding: `${pt(10)} ${pt(9)} ${pt(9)}`,
+                  textDecoration: "none",
+                }}
+              >
+                <Mark name={glyph} />
+                <span style={{ fontSize: pt(7), letterSpacing: "0.2em", textTransform: "uppercase", opacity: 0.6 }}>{k}</span>
+                <span style={{ fontSize: pt(8.5), letterSpacing: "0.01em", wordBreak: "break-word", lineHeight: 1.25 }}>{v}</span>
               </a>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-        <div style={{ marginTop: pt(16), borderTop: "1px solid rgba(239,236,228,0.3)", paddingTop: pt(8), display: "flex", justifyContent: "space-between", fontSize: pt(7.5), letterSpacing: "0.24em", textTransform: "uppercase", opacity: 0.55 }}>
+        <div style={{ marginTop: "auto", paddingTop: pt(8), borderTop: "1px solid rgba(239,236,228,0.3)", display: "flex", justifyContent: "space-between", fontSize: pt(7.5), letterSpacing: "0.24em", textTransform: "uppercase", opacity: 0.55 }}>
           <span>{e.foot.left}</span>
           <span>{e.foot.right}</span>
         </div>

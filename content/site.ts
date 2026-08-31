@@ -13,7 +13,7 @@ export const site = {
 
 export const venues = [
   "Club Chinois",
-  "Las Dalias",
+  "Las Dallias",
   "Lío",
   "Cova Santa",
   "Playa Soleil",

@@ -52,7 +52,7 @@ export const copy = {
         head: "03 · Rooms & cities",
         venues: [
           ["Club Chinois", "Club · peak"],
-          ["Las Dalias", "Open air · late"],
+          ["Las Dallias", "Open air · late"],
           ["Lío", "Dinner → floor"],
           ["Cova Santa", "Open air"],
           ["Nassau Beach Club", "Day"],
@@ -72,7 +72,7 @@ export const copy = {
           ["11", "Cities"],
           ["4", "Countries"],
         ],
-        line: "Club Chinois · Las Dalias · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes, and the rooftops and beach houses of the Riviera Maya.",
+        line: "Club Chinois · Las Dallias · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes, and the rooftops and beach houses of the Riviera Maya.",
       },
       selects: {
         head: "05 · Selects",
@@ -91,6 +91,7 @@ export const copy = {
           ["Since", "2019"],
         ],
         site: "Site",
+        follow: "Find her",
       },
       foot: { left: "Maru Bravo · press kit", right: "Ibiza · worldwide" },
       print: "Print / Save as PDF",
@@ -149,6 +150,7 @@ export const copy = {
         title: "Recorded nights",
         play: "Play",
         tracks: [
+          { t: "Maru Bravo × Sonora", d: "1h 00m" },
           { t: "Live set, full session", d: "1h 58m" },
           { t: "Rooftop, golden hour", d: "62m" },
           { t: "Peak time, dark room", d: "48m" },
@@ -259,7 +261,7 @@ export const copy = {
         head: "03 · Salas y ciudades",
         venues: [
           ["Club Chinois", "Club · peak"],
-          ["Las Dalias", "Open air · late"],
+          ["Las Dallias", "Open air · late"],
           ["Lío", "Cena → pista"],
           ["Cova Santa", "Open air"],
           ["Nassau Beach Club", "Día"],
@@ -279,7 +281,7 @@ export const copy = {
           ["11", "Ciudades"],
           ["4", "Países"],
         ],
-        line: "Club Chinois · Las Dalias · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes, y los rooftops y beach houses de la Riviera Maya.",
+        line: "Club Chinois · Las Dallias · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes, y los rooftops y beach houses de la Riviera Maya.",
       },
       selects: {
         head: "05 · Selección",
@@ -298,6 +300,7 @@ export const copy = {
           ["Desde", "2019"],
         ],
         site: "Sitio",
+        follow: "Dónde encontrarla",
       },
       foot: { left: "Maru Bravo · press kit", right: "Ibiza · worldwide" },
       print: "Imprimir / Guardar PDF",
@@ -356,6 +359,7 @@ export const copy = {
         title: "Noches grabadas",
         play: "Play",
         tracks: [
+          { t: "Maru Bravo × Sonora", d: "1h 00m" },
           { t: "Set en vivo, sesión completa", d: "1h 58m" },
           { t: "Rooftop, golden hour", d: "62m" },
           { t: "Peak time, cuarto oscuro", d: "48m" },

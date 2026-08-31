@@ -16,6 +16,8 @@ const BW = (contrast: number, brightness?: number) =>
 /* The archive wall: strongest frames + every clip, looping.
    Clip slots are deliberately irregular (2, 5, 7, 8, 11, 13, 14) so the videos
    never line up in the same columns of the 4-up grid. */
+const SONORA_SET = "https://www.youtube.com/watch?v=7Yybi9BuMVA";
+
 const ARCHIVE: (
   | { type: "photo"; src: string; alt: string; c: number; pos?: string }
   | { type: "clip"; i: number }
@@ -53,7 +55,7 @@ export default function Home() {
   const statImg = useRef<HTMLDivElement>(null);
 
   const h = t.home;
-  const trackLinks = [site.socials.soundcloud, site.socials.soundcloud, site.socials.spotify];
+  const trackLinks = [SONORA_SET, site.socials.soundcloud, site.socials.soundcloud, site.socials.spotify];
 
   useEffect(() => {
     const onScroll = () => {
