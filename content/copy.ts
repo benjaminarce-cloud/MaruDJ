@@ -24,8 +24,8 @@ export const copy = {
           ["02", "The sound", "p. 05"],
           ["03", "Rooms & cities", "p. 06"],
           ["04", "In numbers", "p. 07"],
-          ["05", "Selects", "p. 09"],
-          ["06", "Booking & logistics", "p. 10"],
+          ["05", "Selects", "p. 08"],
+          ["06", "Booking & logistics", "p. 09"],
         ],
       },
       who: {
@@ -51,7 +51,8 @@ export const copy = {
       rooms: {
         head: "03 · Rooms & cities",
         venues: [
-          ["Ushuaïa", "The Unexpected · peak"],
+          ["Club Chinois", "Club · peak"],
+          ["Las Dalias", "Open air · late"],
           ["Lío", "Dinner → floor"],
           ["Cova Santa", "Open air"],
           ["Nassau Beach Club", "Day"],
@@ -71,9 +72,8 @@ export const copy = {
           ["11", "Cities"],
           ["4", "Countries"],
         ],
-        line: "Ushuaïa · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes, and the rooftops and beach houses of the Riviera Maya.",
+        line: "Club Chinois · Las Dalias · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes, and the rooftops and beach houses of the Riviera Maya.",
       },
-      plateB: { title: ["Feel-good music", "for dark rooms"], left: "Peak time", right: "Ibiza" },
       selects: {
         head: "05 · Selects",
         captions: "Rooftop above the sea · Walking in · Street portrait",
@@ -231,8 +231,8 @@ export const copy = {
           ["02", "El sonido", "p. 05"],
           ["03", "Salas y ciudades", "p. 06"],
           ["04", "En números", "p. 07"],
-          ["05", "Selección", "p. 09"],
-          ["06", "Booking y logística", "p. 10"],
+          ["05", "Selección", "p. 08"],
+          ["06", "Booking y logística", "p. 09"],
         ],
       },
       who: {
@@ -258,7 +258,8 @@ export const copy = {
       rooms: {
         head: "03 · Salas y ciudades",
         venues: [
-          ["Ushuaïa", "The Unexpected · peak"],
+          ["Club Chinois", "Club · peak"],
+          ["Las Dalias", "Open air · late"],
           ["Lío", "Cena → pista"],
           ["Cova Santa", "Open air"],
           ["Nassau Beach Club", "Día"],
@@ -278,9 +279,8 @@ export const copy = {
           ["11", "Ciudades"],
           ["4", "Países"],
         ],
-        line: "Ushuaïa · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes, y los rooftops y beach houses de la Riviera Maya.",
+        line: "Club Chinois · Las Dalias · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes, y los rooftops y beach houses de la Riviera Maya.",
       },
-      plateB: { title: ["Música para sentirse bien", "en cuartos oscuros"], left: "Peak time", right: "Ibiza" },
       selects: {
         head: "05 · Selección",
         captions: "Rooftop sobre el mar · Entrando · Retrato en la calle",

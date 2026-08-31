@@ -12,7 +12,8 @@ export const site = {
 };
 
 export const venues = [
-  "Ushuaïa",
+  "Club Chinois",
+  "Las Dalias",
   "Lío",
   "Cova Santa",
   "Playa Soleil",
@@ -81,6 +82,7 @@ export const gallery: Photo[] = [
   { src: "/photos/photo-22.jpg", alt: "Golden light at the decks in a cowboy hat", w: 1012, h: 1800 },
   { src: "/photos/photo-30.jpg", alt: "Sunlit portrait under the palms", w: 1202, h: 1800 },
   { src: "/photos/photo-03.jpg", alt: "Maru Bravo at the decks under a wooden arched ceiling", w: 1200, h: 1800 },
+  { src: "/photos/photo-34.jpg", alt: "Cova Santa, behind the decks", w: 1206, h: 1183 },
   { src: "/photos/photo-24.jpg", alt: "Red neon booth, Pioneer decks", w: 1350, h: 1800 },
   { src: "/photos/photo-05.jpg", alt: "Motion-blurred moment behind the booth", w: 2000, h: 3000 },
   { src: "/photos/photo-27.jpg", alt: "Rooftop decks at golden hour", w: 1350, h: 1800 },
@@ -88,6 +90,7 @@ export const gallery: Photo[] = [
   { src: "/photos/photo-23.jpg", alt: "Neon-lit club set", w: 1206, h: 804 },
   { src: "/photos/photo-31.jpg", alt: "Daytime editorial, pink wall", w: 1202, h: 1800 },
   { src: "/photos/photo-25.jpg", alt: "Night out at ROTO in a silk dress", w: 1012, h: 1800 },
+  { src: "/photos/photo-35.jpg", alt: "Bunker, red neon booth", w: 1206, h: 1874 },
   { src: "/photos/photo-09.jpg", alt: "Maru Bravo dancing mid-set", w: 1200, h: 1800 },
   { src: "/photos/photo-33.jpg", alt: "Maru Bravo at the decks, end of the night", w: 2000, h: 3000 },
   { src: "/photos/photo-29.jpg", alt: "Club set under green lasers", w: 1012, h: 1800 },

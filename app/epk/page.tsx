@@ -274,26 +274,9 @@ export default function EPK() {
         </div>
       </Page>
 
-      {/* ============ 08 · PLATE ============ */}
-      <Page dark>
-        <Image src="/photos/photo-05.jpg" alt="Long exposure behind the booth" fill sizes="(min-width: 900px) 8.5in, 100vw" style={{ objectFit: "cover", filter: bw(1.06, 1.35) }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(11,11,11,0.25),rgba(11,11,11,0) 44%,rgba(11,11,11,0.78))" }} />
-        <div style={{ position: "absolute", left: inch(0.62), right: inch(0.62), bottom: inch(0.5) }}>
-          <p style={{ margin: 0, fontFamily: DISPLAY, textTransform: "uppercase", fontSize: pt(40), lineHeight: 0.92 }}>
-            {e.plateB.title[0]}
-            <br />
-            {e.plateB.title[1]}
-          </p>
-          <div style={{ display: "flex", justifyContent: "space-between", marginTop: pt(10), borderTop: "1px solid rgba(239,236,228,0.35)", paddingTop: pt(7), fontSize: pt(7.5), letterSpacing: "0.24em", textTransform: "uppercase", opacity: 0.8 }}>
-            <span>{e.plateB.left}</span>
-            <span>{e.plateB.right}</span>
-          </div>
-        </div>
-      </Page>
-
-      {/* ============ 09 · SELECTS ============ */}
+      {/* ============ 08 · SELECTS ============ */}
       <Page style={{ boxSizing: "border-box", padding: inch(0.62), display: "flex", flexDirection: "column" }}>
-        <RunningHead label={e.selects.head} page="09" />
+        <RunningHead label={e.selects.head} page="08" />
         <div style={{ flex: 1, minHeight: 0, overflow: "hidden", display: "grid", gridTemplateColumns: "1.25fr 1fr", gridTemplateRows: "1fr 1fr", gap: pt(9), marginTop: pt(14) }}>
           <Frame src="/photos/photo-26.jpg" alt="Rooftop set above the sea" filter={bw(1.1)} style={{ gridRow: "span 2" }} />
           <Frame src="/photos/photo-25.jpg" alt="Walking in, Ibiza" filter={bw(1.14)} position="50% 35%" />
@@ -305,9 +288,9 @@ export default function EPK() {
         </div>
       </Page>
 
-      {/* ============ 10 · BOOKING & LOGISTICS ============ */}
+      {/* ============ 09 · BOOKING & LOGISTICS ============ */}
       <Page dark style={{ boxSizing: "border-box", padding: inch(0.62), display: "flex", flexDirection: "column" }}>
-        <RunningHead label={e.booking.head} page="10" dark />
+        <RunningHead label={e.booking.head} page="09" dark />
         <div style={{ marginTop: pt(24) }}>
           <a href={`mailto:${site.bookingEmail}`} style={{ fontFamily: DISPLAY, textTransform: "uppercase", fontSize: pt(31), lineHeight: 1, display: "block", wordBreak: "break-word" }}>
             bookings@

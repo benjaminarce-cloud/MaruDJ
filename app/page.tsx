@@ -17,11 +17,12 @@ const BW = (contrast: number, brightness?: number) =>
    Clip slots are deliberately irregular (2, 5, 7, 8, 11, 13, 14) so the videos
    never line up in the same columns of the 4-up grid. */
 const ARCHIVE: (
-  | { type: "photo"; src: string; alt: string; c: number }
+  | { type: "photo"; src: string; alt: string; c: number; pos?: string }
   | { type: "clip"; i: number }
 )[] = [
   { type: "photo", src: "/photos/photo-26.jpg", alt: "Golden hour rooftop set", c: 1.1 },
-  { type: "photo", src: "/photos/photo-24.jpg", alt: "Red neon booth, Pioneer decks", c: 1.22 },
+  { type: "photo", src: "/photos/photo-34.jpg", alt: "Cova Santa, behind the decks", c: 1.12, pos: "30% 50%" },
+  { type: "photo", src: "/photos/photo-35.jpg", alt: "Bunker, red neon booth", c: 1.14 },
   { type: "clip", i: 5 }, // peak time, red
   { type: "photo", src: "/photos/photo-05.jpg", alt: "Motion-blurred moment behind the booth", c: 1.18 },
   { type: "photo", src: "/photos/photo-25.jpg", alt: "Night out at Roto", c: 1.14 },
@@ -110,15 +111,17 @@ export default function Home() {
         {/* ======== HERO ======== */}
         <section id="top" className="relative min-h-svh flex flex-col justify-center px-5 md:px-[26px] pt-[70px] pb-[26px] overflow-hidden">
           <Image
-            src="/photos/photo-05.jpg"
-            alt="Long exposure behind the booth"
+            src="/photos/photo-19.jpg"
+            alt="Maru Bravo, studio portrait in sunglasses"
             fill
             priority
             sizes="100vw"
-            className="object-cover"
-            style={{ filter: BW(1.25, 0.42) }}
+            className="object-cover object-[50%_40%]"
+            style={{ filter: BW(1.12, 0.78) }}
           />
-          <div className="absolute inset-0 [background:radial-gradient(ellipse_at_50%_45%,rgba(6,6,6,0.35),rgba(6,6,6,0.94)_78%)]" />
+          {/* The shoot's backdrop is already near-black, so it melts into the page:
+             scrim only needs to protect the type, not drown the frame. */}
+          <div className="absolute inset-0 [background:linear-gradient(180deg,rgba(6,6,6,0.70)_0%,rgba(6,6,6,0.34)_38%,rgba(6,6,6,0.72)_78%,rgba(6,6,6,0.94)_100%)]" />
 
           <div className="relative text-center max-w-[1180px] mx-auto w-full">
             <div className="flex items-center gap-4 justify-center text-[10.5px] tracking-[0.32em] uppercase opacity-70">
@@ -131,7 +134,7 @@ export default function Home() {
               <br />
               Bravo
             </h1>
-            <p className="font-editorial italic text-[clamp(20px,2.4vw,34px)] mt-5 opacity-90">{h.hero.tagline}</p>
+            <p className="uppercase text-[clamp(12px,1.75vw,21px)] tracking-[0.2em] mt-[26px] opacity-85">{h.hero.tagline}</p>
             <div className="flex items-center gap-4 justify-center mt-[30px] text-[10.5px] tracking-[0.26em] uppercase opacity-70">
               <span className="h-px flex-1 bg-ink/30" />
               {h.hero.genres.map((g, i) => (
@@ -246,6 +249,7 @@ export default function Home() {
                         fill
                         sizes="(min-width: 768px) 25vw, 50vw"
                         className="object-cover"
+                        style={m.pos ? { objectPosition: m.pos } : undefined}
                       />
                     </div>
                   ) : (
