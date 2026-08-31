@@ -111,12 +111,12 @@ export default function Home() {
         {/* ======== HERO ======== */}
         <section id="top" className="relative min-h-svh flex flex-col justify-center px-5 md:px-[26px] pt-[70px] pb-[26px] overflow-hidden">
           <Image
-            src="/photos/photo-19.jpg"
-            alt="Maru Bravo, studio portrait in sunglasses"
+            src="/photos/photo-36.jpg"
+            alt="Maru Bravo, studio portrait in sunglasses, hands framing her face"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[50%_40%]"
+            className="object-cover object-[86%_30%] md:object-[50%_30%]"
             style={{ filter: BW(1.12, 0.78) }}
           />
           {/* The shoot's backdrop is already near-black, so it melts into the page:

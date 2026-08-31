@@ -84,6 +84,7 @@ export const gallery: Photo[] = [
   { src: "/photos/photo-03.jpg", alt: "Maru Bravo at the decks under a wooden arched ceiling", w: 1200, h: 1800 },
   { src: "/photos/photo-34.jpg", alt: "Cova Santa, behind the decks", w: 1206, h: 1183 },
   { src: "/photos/photo-24.jpg", alt: "Red neon booth, Pioneer decks", w: 1350, h: 1800 },
+  { src: "/photos/photo-37.jpg", alt: "Studio portrait, headphones around her neck", w: 1200, h: 1800 },
   { src: "/photos/photo-05.jpg", alt: "Motion-blurred moment behind the booth", w: 2000, h: 3000 },
   { src: "/photos/photo-27.jpg", alt: "Rooftop decks at golden hour", w: 1350, h: 1800 },
   { src: "/photos/photo-08.jpg", alt: "Maru Bravo smiling behind the mixer", w: 1200, h: 1800 },
