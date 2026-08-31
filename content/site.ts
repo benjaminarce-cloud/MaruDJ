@@ -54,6 +54,8 @@ export const clips: Clip[] = [
   { src: "/video/clip-pool.mp4", poster: "/video/clip-pool-poster.jpg", tag: { en: "Rooftop pool, dusk", es: "Rooftop pool, atardecer" }, portrait: true },
   { src: "/video/clip-red.mp4", poster: "/video/clip-red-poster.jpg", tag: { en: "Peak time", es: "Peak time" }, portrait: true },
   { src: "/video/clip-crowd.mp4", poster: "/video/clip-crowd-poster.jpg", tag: { en: "On the floor", es: "En la pista" }, portrait: true },
+  { src: "/video/clip-rooftop.mp4", poster: "/video/clip-rooftop-poster.jpg", tag: { en: "Rooftop bar, sunset", es: "Rooftop bar, atardecer" }, portrait: false },
+  { src: "/video/clip-rooftop-reel.mp4", poster: "/video/clip-rooftop-reel-poster.jpg", tag: { en: "Rooftop, the full set", es: "Rooftop, el set completo" }, portrait: false },
 ];
 
 export type EventItem = {
@@ -81,6 +83,7 @@ export const gallery: Photo[] = [
   { src: "/photos/photo-28.jpg", alt: "Sandbar Beach House, playing by the sea", w: 1350, h: 1800 },
   { src: "/photos/photo-22.jpg", alt: "Golden light at the decks in a cowboy hat", w: 1012, h: 1800 },
   { src: "/photos/photo-30.jpg", alt: "Sunlit portrait under the palms", w: 1202, h: 1800 },
+  { src: "/photos/photo-38.jpg", alt: "Studio portrait, hands framing her face", w: 1200, h: 1800 },
   { src: "/photos/photo-03.jpg", alt: "Maru Bravo at the decks under a wooden arched ceiling", w: 1200, h: 1800 },
   { src: "/photos/photo-34.jpg", alt: "Cova Santa, behind the decks", w: 1206, h: 1183 },
   { src: "/photos/photo-24.jpg", alt: "Red neon booth, Pioneer decks", w: 1350, h: 1800 },
@@ -88,8 +91,10 @@ export const gallery: Photo[] = [
   { src: "/photos/photo-05.jpg", alt: "Motion-blurred moment behind the booth", w: 2000, h: 3000 },
   { src: "/photos/photo-27.jpg", alt: "Rooftop decks at golden hour", w: 1350, h: 1800 },
   { src: "/photos/photo-08.jpg", alt: "Maru Bravo smiling behind the mixer", w: 1200, h: 1800 },
+  { src: "/photos/hero.jpg", alt: "Sequin dress at the decks", w: 2000, h: 3000 },
   { src: "/photos/photo-23.jpg", alt: "Neon-lit club set", w: 1206, h: 804 },
   { src: "/photos/photo-31.jpg", alt: "Daytime editorial, pink wall", w: 1202, h: 1800 },
+  { src: "/photos/statement.jpg", alt: "Rooftop at sunset, headphones on", w: 1125, h: 2000 },
   { src: "/photos/photo-25.jpg", alt: "Night out at ROTO in a silk dress", w: 1012, h: 1800 },
   { src: "/photos/photo-35.jpg", alt: "Bunker, red neon booth", w: 1206, h: 1874 },
   { src: "/photos/photo-09.jpg", alt: "Maru Bravo dancing mid-set", w: 1200, h: 1800 },
@@ -97,6 +102,7 @@ export const gallery: Photo[] = [
   { src: "/photos/photo-29.jpg", alt: "Club set under green lasers", w: 1012, h: 1800 },
   { src: "/photos/photo-02.jpg", alt: "Maru Bravo at the decks under a neon sign and string lights", w: 1200, h: 1800 },
   { src: "/photos/photo-32.jpg", alt: "Black and white street portrait", w: 1206, h: 1077 },
+  { src: "/photos/about.jpg", alt: "Black and white studio portrait, arms crossed", w: 1200, h: 1800 },
   { src: "/photos/photo-10.jpg", alt: "Maru Bravo smiling in the booth", w: 1200, h: 1800 },
   { src: "/photos/photo-04.jpg", alt: "Maru Bravo working the mixer mid-set", w: 2000, h: 3000 },
   { src: "/photos/photo-06.jpg", alt: "Long-exposure movement during a set", w: 1200, h: 1800 },

@@ -24,6 +24,7 @@ const ARCHIVE: (
   { type: "photo", src: "/photos/photo-34.jpg", alt: "Cova Santa, behind the decks", c: 1.12, pos: "30% 50%" },
   { type: "photo", src: "/photos/photo-35.jpg", alt: "Bunker, red neon booth", c: 1.14 },
   { type: "clip", i: 5 }, // peak time, red
+  { type: "photo", src: "/photos/photo-37.jpg", alt: "Studio portrait, headphones around her neck", c: 1.1 },
   { type: "photo", src: "/photos/photo-05.jpg", alt: "Motion-blurred moment behind the booth", c: 1.18 },
   { type: "photo", src: "/photos/photo-25.jpg", alt: "Night out at Roto", c: 1.14 },
   { type: "clip", i: 1 }, // rooftop, golden hour

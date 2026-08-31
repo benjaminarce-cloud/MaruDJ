@@ -10,7 +10,7 @@ type Item = { type: "photo"; photo: Photo } | { type: "clip"; clip: Clip };
 
 /* every frame and every clip, with the clips on irregular slots so they never
    line up in the same columns of the grid */
-const CLIP_SLOTS = [2, 9, 13, 20, 27, 31, 38];
+const CLIP_SLOTS = [2, 9, 13, 20, 27, 31, 36, 41, 46];
 
 const MEDIA: Item[] = (() => {
   const out: Item[] = [];
