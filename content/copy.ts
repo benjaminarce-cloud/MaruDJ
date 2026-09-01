@@ -52,7 +52,7 @@ export const copy = {
         head: "03 · Rooms & cities",
         venues: [
           ["Club Chinois", "Club · peak"],
-          ["Las Dallias", "Open air · late"],
+          ["Las Dalias", "Open air · late"],
           ["Lío", "Dinner → floor"],
           ["Cova Santa", "Open air"],
           ["Nassau Beach Club", "Day"],
@@ -72,7 +72,7 @@ export const copy = {
           ["11", "Cities"],
           ["4", "Countries"],
         ],
-        line: "Club Chinois · Las Dallias · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes, and the rooftops and beach houses of the Riviera Maya.",
+        line: "Club Chinois · Las Dalias · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes, and the rooftops and beach houses of the Riviera Maya.",
       },
       selects: {
         head: "05 · Selects",
@@ -261,7 +261,7 @@ export const copy = {
         head: "03 · Salas y ciudades",
         venues: [
           ["Club Chinois", "Club · peak"],
-          ["Las Dallias", "Open air · late"],
+          ["Las Dalias", "Open air · late"],
           ["Lío", "Cena → pista"],
           ["Cova Santa", "Open air"],
           ["Nassau Beach Club", "Día"],
@@ -281,7 +281,7 @@ export const copy = {
           ["11", "Ciudades"],
           ["4", "Países"],
         ],
-        line: "Club Chinois · Las Dallias · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes, y los rooftops y beach houses de la Riviera Maya.",
+        line: "Club Chinois · Las Dalias · Lío · Cova Santa · Playa Soleil · Nassau Beach Club · Roto · Keeper · Dunes, y los rooftops y beach houses de la Riviera Maya.",
       },
       selects: {
         head: "05 · Selección",
