@@ -146,7 +146,7 @@ export default function EPK() {
       {/* ============ 01 · COVER ============ */}
       <Page dark style={{ overflow: "hidden" }}>
         <Image
-          src="/photos/photo-21.jpg"
+          src="/photos/epk-cover.jpg"
           alt="Maru Bravo, studio portrait"
           fill
           priority
